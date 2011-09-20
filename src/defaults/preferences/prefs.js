@@ -1,0 +1,17 @@
+pref("extensions.iswas.toggle.expand.search", true);
+pref("extensions.iswas.toggle.expand.ident", true);
+pref("extensions.iswas.toggle.expand.nav", true);
+pref("extensions.iswas.toggle.collapse.search", true);
+pref("extensions.iswas.toggle.collapse.ident", true);
+pref("extensions.iswas.toggle.collapse.nav", true);
+pref("extensions.iswas.autorun", true);
+pref("extensions.iswas.autorun.search", true);
+pref("extensions.iswas.autorun.ident", true);
+pref("extensions.iswas.autorun.tab", false);
+pref("extensions.iswas.autorun.nav", false);
+pref("extensions.iswas.autorun.tree", false);
+pref("extensions.iswas.design.animation.no", true);
+pref("extensions.iswas.design.animation.basic", false);
+pref("extensions.iswas.design.animation.complex", false);
+pref("extensions.iswas.advanced.wai", true);
+pref("extensions.iswas.advanced.trans", false);

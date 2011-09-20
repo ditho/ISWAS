@@ -1,0 +1,82 @@
+<!ENTITY sidebar.prev.label "prev">
+<!ENTITY sidebar.next.label "next">
+<!ENTITY sidebar.search.title "Search the entire webpage">
+<!ENTITY sidebar.search.name "Search: ">
+<!ENTITY sidebar.search.name.accesskey "s">
+<!ENTITY sidebar.search.prev.tooltip "previous search area">
+<!ENTITY sidebar.search.next.tooltip "next search area">
+<!ENTITY sidebar.search.current.label "current search area:">
+<!ENTITY sidebar.ident.title "Login/Logout">
+<!ENTITY sidebar.ident.name "User: ">
+<!ENTITY sidebar.ident.name.accesskey "U">
+<!ENTITY sidebar.ident.pass "Password: ">
+<!ENTITY sidebar.ident.button.login "Login">
+<!ENTITY sidebar.ident.button.login.accesskey "L">
+<!ENTITY sidebar.ident.button.logout "Logout">
+<!ENTITY sidebar.ident.prev.tooltip "previous login area">
+<!ENTITY sidebar.ident.next.tooltip "next login area">
+<!ENTITY sidebar.ident.current.label "current login area:">
+<!ENTITY sidebar.ident.button.logout.accesskey "b">
+<!ENTITY sidebar.nav.title "Navigation areas">
+<!ENTITY sidebar.nav.prev.tooltip "previous navigation area">
+<!ENTITY sidebar.nav.next.tooltip "next navigation area">
+<!ENTITY sidebar.nav.current.label "current navigation area">
+<!ENTITY sidebar.tab.title "Tabbox">
+<!ENTITY sidebar.tree.title "Trees">
+<!ENTITY sidebar.title "ISWAS">
+<!ENTITY sidebar.open.commandkey "F">
+<!ENTITY sidebar.open.modifierskey "accel shift">
+<!ENTITY key.extension.title "ISWAS">
+<!ENTITY key.search.title "find search area">
+<!ENTITY key.search.commandkey "S">
+<!ENTITY key.search.modifierskey "accel shift">
+<!ENTITY key.ident.title "find login area">
+<!ENTITY key.ident.commandkey "L">
+<!ENTITY key.ident.modifierskey "accel shift">
+<!ENTITY key.nav.title "find navigation area">
+<!ENTITY key.nav.commandkey "Y">
+<!ENTITY key.nav.modifierskey "accel shift">
+<!ENTITY prefs.title "ISWAS Options">
+<!ENTITY prefs.standard "Standardeinstellungen wiederherstellen">
+<!ENTITY prefs.pane.abstract.title "Abstract">
+<!ENTITY prefs.pane.abstract.autorun.title "Autostart">
+<!ENTITY prefs.pane.abstract.autorun.description "Choose the areas that ISWAS would automatically search for each webpage. You can view the results in the sidebar of ISWAS. Alternatively, you can initiate the search by using a keyboard shortcut.">
+<!ENTITY prefs.pane.abstract.autorun.standard "Activate all (standard)">
+<!ENTITY prefs.pane.abstract.autorun.search ": if activated then ISWAS find the search areas of a webpage for you.">
+<!ENTITY prefs.pane.abstract.autorun.ident ": refers to the user area of the webpage and allows you to quickly login and logout.">
+<!ENTITY prefs.pane.abstract.autorun.tab ": find tabboxes for you and increase their accessibility. (Experimental)">
+<!ENTITY prefs.pane.abstract.autorun.nav ": refers to the navigation areas of the webpage and allows a fast control and improved navigation. (Experimental)">
+<!ENTITY prefs.pane.abstract.autorun.tree ": find dynamic trees and increase their accessibility. (Experimental)">
+<!ENTITY prefs.pane.abstract.toggle.title "Sidebar: Areas that would automatically expand/collapse">
+<!ENTITY prefs.pane.abstract.toggle.description "Choose which areas in the sidebar will automatically be opened or closed according to analysis results. For a complete deactivation the area is always displayed.">
+<!ENTITY prefs.pane.abstract.toggle.area "Area">
+<!ENTITY prefs.pane.abstract.toggle.expand "expand">
+<!ENTITY prefs.pane.abstract.toggle.collapse "collapse">
+<!ENTITY prefs.pane.abstract.toggle.activated "active">
+<!ENTITY prefs.pane.design.title "Art">
+<!ENTITY prefs.pane.design.sidebar.title "Sidebar">
+<!ENTITY prefs.pane.design.sidebar.fontsize "font size">
+<!ENTITY prefs.pane.design.sidebar.fontcolor "font color">
+<!ENTITY prefs.pane.design.animation.title "Visual effects">
+<!ENTITY prefs.pane.design.animation.description "Choose an effect that would represent the founded area.">
+<!ENTITY prefs.pane.design.animation.no "No: focuses, selects and outlines the element.">
+<!ENTITY prefs.pane.design.animation.basic "Standard: scrolls to the element hightlights, focuses, selects and outlines them.">
+<!ENTITY prefs.pane.design.animation.complex "Advanced: scrolls to the desired area hightlights (transparency), focuses, selects and outlines them.">
+<!ENTITY prefs.pane.advanced.title "Accessibility">
+<!ENTITY prefs.pane.advanced.accessibility "Structure changes of the webpage">
+<!ENTITY prefs.pane.advanced.accessibility.description "Choose which structural changes are made by the addon.">
+<!ENTITY prefs.pane.advanced.toggle.wai "Let the addon the website with WAI-ARIA award to improve the accessibility of specific areas. When using a screen reader, you can benefit from the additional reference points. (Recommended)">
+<!ENTITY prefs.pane.advanced.toggle.trans "The transformation of content allows for creation of higher performance and more uniform representation of web page elements. After a transformation, some elements are controlled using the keyboard. (Experimental)">
+<!ENTITY about.title "About ISWAS">
+<!ENTITY about.abstract "Abstract">
+<!ENTITY about.abstract.extension.name "Integrated Semantic Web Accessibility Search (ISWAS)">
+<!ENTITY about.abstract.thema "Diploma thesis for the university of Rostock Institut für Informatik">
+<!ENTITY about.abstract.autor "Autor: Thomas Beer">
+<!ENTITY about.licence "GNU GPL">
+<!ENTITY about.licence.descripton "The icons are from the gnome and human-icon-theme. These themes are under the control of the following licence:">
+<!ENTITY about.licence.link.gnome "http://creativecommons.org/licenses/GPL/2.0/">
+<!ENTITY about.licence.link.ubuntu "http://creativecommons.org/licenses/by-sa/3.0/">
+<!ENTITY about.problems "Current Bugs">
+<!ENTITY about.problems.bug1 "">
+<!ENTITY about.problems.bug2 "">
+<!ENTITY about.problems.bug3 "">

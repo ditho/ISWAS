@@ -1,0 +1,93 @@
+@import url("chrome://global/skin");
+/**
+ * SIDEBAR
+ */
+caption {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: black;
+}
+caption[disabled="false"] {
+    color: black;
+}
+caption[disabled="true"] {
+    color: #a7a6aa;
+}
+label.sidebar {
+    width:5em;
+}
+textbox:hover {
+    outline: 1px solid black;
+}
+textbox:hover[disabled="true"] {
+    outline:none;
+}
+/**
+ * OPTIONS
+ */
+#design {
+    -moz-margin-end: 2px;
+    width: 32px;
+    height: 32px;
+}
+prefpane {
+    width: 450px;
+    height: 450px;
+}
+/**
+ * PICTURES
+ */
+#RDFSearchExpanded[down=true], #RDFIdentExpanded[down=true] , #RDFNavigationExpanded[down=true]{
+    color: #a7a6aa;
+    -moz-image-region: rect(32px 32px 64px 0px);
+}
+#RDFSearchExpanded, #RDFIdentExpanded , #RDFNavigationExpanded{
+    -moz-image-region: rect(0px 32px 32px 0px);
+}
+#RDFSearchExpanded {
+    list-style-image: url("chrome://constructfinder/skin/images/gnome/32/system-searchc2g.png");
+}
+#RDFIdentExpanded {
+    list-style-image: url("chrome://constructfinder/skin/images/gnome/32/avatar-defaultc2g.png");
+}
+#RDFNavigationExpanded {
+    list-style-image: url("chrome://constructfinder/skin/images/gnome/32/mail-sendc2g.png");
+}
+/**
+ * MENU
+ */
+toolbarbutton {
+    -moz-user-focus: normal;
+}
+toolbarbutton.RDFBackButton, toolbarbutton.RDFForwardButton {
+    -moz-image-region: rect(0px 32px 32px 0px);
+    -moz-box-orient: vertical;
+    border:0 !important;
+    font-size: x-small;
+}
+toolbarbutton.RDFBackButton:hover, toolbarbutton.RDFForwardButton:hover {
+    -moz-image-region: rect(32px 32px 64px 0px);
+    text-decoration: underline;
+}
+toolbarbutton[disabled=true].RDFBackButton, toolbarbutton[disabled=true].RDFForwardButton {
+    -moz-image-region: rect(64px 32px 96px 0px);
+    text-decoration: none;
+}
+toolbarbutton.RDFBackButton {
+    list-style-image: url("chrome://constructfinder/skin/images/gnome/32/go-previousc2g.png");
+}
+toolbarbutton.RDFForwardButton {
+    list-style-image: url("chrome://constructfinder/skin/images/gnome/32/go-nextc2g.png");
+}
+.RDFLabelArea {
+    text-decoration: underline;
+}
+/**
+ * ANIMATION
+ */
+.RDFAnimationNo {
+    outline: 5px solid black;
+}
+*[aria-expanded="false"] > hbox > * {
+    display : none;
+}

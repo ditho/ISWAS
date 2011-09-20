@@ -1,0 +1,82 @@
+<!ENTITY sidebar.prev.label "zurück">
+<!ENTITY sidebar.next.label "vor">
+<!ENTITY sidebar.search.title "Internetseite durchsuchen">
+<!ENTITY sidebar.search.name "Suchen: ">
+<!ENTITY sidebar.search.name.accesskey "s">
+<!ENTITY sidebar.search.prev.tooltip "vorheriger Suchbereich">
+<!ENTITY sidebar.search.next.tooltip "nächster Suchbereich">
+<!ENTITY sidebar.search.current.label "aktueller Suchbereich:">
+<!ENTITY sidebar.ident.title "Anmelden/Abmelden">
+<!ENTITY sidebar.ident.name "Benutzer: ">
+<!ENTITY sidebar.ident.name.accesskey "n">
+<!ENTITY sidebar.ident.pass "Passwort: ">
+<!ENTITY sidebar.ident.button.login "Anmelden">
+<!ENTITY sidebar.ident.button.login.accesskey "m">
+<!ENTITY sidebar.ident.button.logout "Abmelden">
+<!ENTITY sidebar.ident.prev.tooltip "vorheriger Loginbereich">
+<!ENTITY sidebar.ident.next.tooltip "nächster Loginbereich">
+<!ENTITY sidebar.ident.current.label "aktueller Loginbereich:">
+<!ENTITY sidebar.ident.button.logout.accesskey "b">
+<!ENTITY sidebar.nav.title "Seitennavigationen">
+<!ENTITY sidebar.nav.prev.tooltip "vorheriger Navigationsbereich">
+<!ENTITY sidebar.nav.next.tooltip "nächster Navigationsbereich">
+<!ENTITY sidebar.nav.current.label "aktueller Navigationsbereich">
+<!ENTITY sidebar.tab.title "Registerkarten">
+<!ENTITY sidebar.tree.title "Bäume">
+<!ENTITY sidebar.title "ISWAS">
+<!ENTITY sidebar.open.commandkey "F">
+<!ENTITY sidebar.open.modifierskey "accel shift">
+<!ENTITY key.extension.title "ISWAS">
+<!ENTITY key.search.title "Suchbereich finden">
+<!ENTITY key.search.commandkey "S">
+<!ENTITY key.search.modifierskey "accel shift">
+<!ENTITY key.ident.title "Loginbereich finden">
+<!ENTITY key.ident.commandkey "L">
+<!ENTITY key.ident.modifierskey "accel shift">
+<!ENTITY key.nav.title "Navigationsbereich finden">
+<!ENTITY key.nav.commandkey "Y">
+<!ENTITY key.nav.modifierskey "accel shift">
+<!ENTITY prefs.title "ISWAS Einstellungen">
+<!ENTITY prefs.standard "Standardeinstellungen wiederherstellen">
+<!ENTITY prefs.pane.abstract.title "Allgemein">
+<!ENTITY prefs.pane.abstract.autorun.title "Autostart">
+<!ENTITY prefs.pane.abstract.autorun.description "Wählen Sie diejenigen Bereiche aus, die ISWAS automatisch für jede neue Webseite suchen soll. Die Ergebnisse können Sie in der Sidebar betrachten. Alternativ, können Sie die Suche auch über eine Tastenkombination auslösen.">
+<!ENTITY prefs.pane.abstract.autorun.standard "Alles aktivieren (Standardeinstellung)">
+<!ENTITY prefs.pane.abstract.autorun.search ": bei Aktivierung findet ISWAS die Suchbereiche der Webseite für Sie.">
+<!ENTITY prefs.pane.abstract.autorun.ident ": findet für Sie den Benutzerbereich der Webseite und ermöglich Ihnen eine schnelle An- und Abmeldung.">
+<!ENTITY prefs.pane.abstract.autorun.tab ": findet Registerkarten für Sie und verbessert deren Zugänglichkeit (Experimentell)">
+<!ENTITY prefs.pane.abstract.autorun.nav ": findet die Navigationsbereiche der Webseite und ermöglicht eine schnelle Ansteuerung und verbessert die Seitennavigation. (Experimentell)">
+<!ENTITY prefs.pane.abstract.autorun.tree ": findet dynamische Bäume und verbessert deren Zugänglichkeit. (Experimentell)">
+<!ENTITY prefs.pane.abstract.toggle.title "Sidebar: Bereiche automatisch expandieren/schließen">
+<!ENTITY prefs.pane.abstract.toggle.description "Wählen Sie, welche Bereiche in der Sidebar automatisch nach Analyseergebnissen geöffnet bzw. geschlossen werden sollen. Bei einer vollständigen Deaktivierung wird der Bereich immer angezeigt.">
+<!ENTITY prefs.pane.abstract.toggle.area "Bereich">
+<!ENTITY prefs.pane.abstract.toggle.expand "expandieren">
+<!ENTITY prefs.pane.abstract.toggle.collapse "schließen">
+<!ENTITY prefs.pane.abstract.toggle.activated "aktiv">
+<!ENTITY prefs.pane.design.title "Gestaltung">
+<!ENTITY prefs.pane.design.sidebar.title "Sidebar">
+<!ENTITY prefs.pane.design.sidebar.fontsize "Schriftgröße">
+<!ENTITY prefs.pane.design.sidebar.fontcolor "Schriftfarbe">
+<!ENTITY prefs.pane.design.animation.title "Visuelle Effekte">
+<!ENTITY prefs.pane.design.animation.description "Suchen Sie sich einen Effekt aus, der den gesuchten Bereich geeignet für Sie herausstellt.">
+<!ENTITY prefs.pane.design.animation.no "Keine: fokussiert, selektiert und umrahmt das gesuchte Element.">
+<!ENTITY prefs.pane.design.animation.basic "Standard: Scrollt zum gesuchten Element, stellt es kurz hervor bzw. fokussiert, selektiert und umrahmt es.">
+<!ENTITY prefs.pane.design.animation.complex "Erweitert: Scrollt zum gesuchten Element, stellt das Element hervor, indem der Hintergrund transparent dargestellt wird. Es folgt eine ergänzende Standardanimation.">
+<!ENTITY prefs.pane.advanced.title "Zugänglichkeit">
+<!ENTITY prefs.pane.advanced.accessibility "Webseitenveränderungen">
+<!ENTITY prefs.pane.advanced.accessibility.description "Wählen Sie, welche Strukturveränderungen durch das Addon vorgenommen werden.">
+<!ENTITY prefs.pane.advanced.toggle.wai "Lassen Sie das Addon die Webseite mit WAI-ARIA auszeichnen, um die Zugänglichkeit einzelner Bereiche zu verbessern. Bei der Nutzung eines Screenreaders können Sie von den zusätzlichen Orientierungspunkten profitieren. (Empfohlen)">
+<!ENTITY prefs.pane.advanced.toggle.trans "Die Transformation von Inhalten ermöglicht eine performantere und einheitlichere Darstellung für Webseitenelemente zu finden. Nach einer Transformation können einige Elemente per Tastatur bedient werden. (Experimentell)">
+<!ENTITY about.title "Über ISWAS">
+<!ENTITY about.abstract "Allgemein">
+<!ENTITY about.abstract.extension.name "Integrated Semantic Web Accessibility Search (ISWAS)">
+<!ENTITY about.abstract.thema "Diplomarbeit an der Universität Rostock Institut für Informatik">
+<!ENTITY about.abstract.autor "Autor: Thomas Beer">
+<!ENTITY about.licence "GNU GPL">
+<!ENTITY about.licence.descripton "Die Icons entstammen dem gnome-icon-theme und human-icon-theme und stehen unter folgenden Lizenzen:">
+<!ENTITY about.licence.link.gnome "http://creativecommons.org/licenses/GPL/2.0/">
+<!ENTITY about.licence.link.ubuntu "http://creativecommons.org/licenses/by-sa/3.0/">
+<!ENTITY about.problems "Aktuelle Bugs">
+<!ENTITY about.problems.bug1 "- Autorun: switch Autorun gesamt wird nicht gespeichert. (gelöst)">
+<!ENTITY about.problems.bug2 "- Gestaltung: status radio buttons werden nicht gespeichert.">
+<!ENTITY about.problems.bug3 "- Konstruktsuche kann nicht über die Menüeinträge gestartet werden. (gelöst)">

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Test XPathExpression</title>
+    </head>
+    <body>
+        <form id="evaluater" action="#" method="post">
+            <fieldset>
+                <legend>Evaluate the Expression for a given Context</legend>
+                <dl>
+                    <dt><label for="context">Context</label></dt>
+                    <dd>
+                        <select id="context" name="context">
+                            <option value="testform1">First Output Formular</option>
+                            <option value="testform2">Second Output Formular</option>
+                        </select>
+                    </dd>
+                    <dt><label for="expression">Expression</label></dt>
+                    <dd><input id="expression" type="text" value=".//output" /></dd>
+                    <dt><label for="evaluate">Evaluate the Expression</label></dt>
+                    <dd><input id="evaluate" type="button" value="evaluate" /></dd>
+                </dl>
+            </fieldset>
+        </form>
+        
+        
+        <form id="testform1" action="#" method="post">
+            <fieldset>
+                <legend>Should Display the Output for the First Context!</legend>
+                <label for="output1">First Output:</label>
+                <output id="output1"></output>
+            </fieldset>
+        </form>
+        <form id="testform2" action="#" method="post">
+            <fieldset>
+                <legend>Should Display the Output for the Second Context!</legend>
+                <label for="output2">Second Output:</label>
+                <output id="output2"></output>
+            </fieldset>
+        </form>
+        
+        <script>
+            document.getElementById("evaluate").addEventListener("click",click,false);
+            function click() {
+                var context = document.getElementById("context").value;
+                var context = document.getElementById(context);
+                var expression = document.getElementById("expression").value;
+                var expression = document.createExpression(expression, null);
+                var xpathResult = expression.evaluate(context, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+                var element = xpathResult.singleNodeValue;
+                if(!element)
+                    alert("Error: Could not evaluate the expression for the context!\n"
+                    + "InnerHTML of the Context: " + context.innerHTML + "\n"
+                    + "Expression=" + expression);
+                element.value = "Only success if this output was displayed in the right context!";
+            }
+        </script>
+    </body>
+</html>

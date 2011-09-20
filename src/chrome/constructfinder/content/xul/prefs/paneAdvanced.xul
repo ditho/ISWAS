@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE page SYSTEM "chrome://constructfinder/locale/constructFinder.dtd">
+<prefwindow id="prefISWAS" title="&prefs.title;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <prefpane id="advanced">
+        <preferences>
+            <preference id="advancedWAIPref" name="extensions.iswas.advanced.wai" type="bool" />
+            <preference id="advancedTransPref" name="extensions.iswas.advanced.trans" type="bool" />
+        </preferences>
+        <groupbox id="advancedGroupAccessibility">
+            <caption disabled="false" label="&prefs.pane.advanced.accessibility;" />
+            <description>&prefs.pane.advanced.accessibility.description;</description>
+            <checkbox label="&prefs.pane.advanced.toggle.wai;" preference="advancedWAIPref" />
+            <checkbox label="&prefs.pane.advanced.toggle.trans;" preference="advancedTransPref" />
+        </groupbox>
+    </prefpane>
+</prefwindow>

@@ -1,0 +1,8 @@
+content constructfinder file:///C:/Dokumente%20und%20Einstellungen/tb006/Eigene%20Dateien/NetBeansProjects/ISWAS/src/chrome/constructfinder/content/
+skin constructfinder classic file:///C:/Dokumente%20und%20Einstellungen/tb006/Eigene%20Dateien/NetBeansProjects/ISWAS/src/chrome/constructfinder/skin/classic/
+locale constructfinder de-DE file:///C:/Dokumente%20und%20Einstellungen/tb006/Eigene%20Dateien/NetBeansProjects/ISWAS/src/chrome/constructfinder/locale/de-DE/
+locale constructfinder en-US file:///C:/Dokumente%20und%20Einstellungen/tb006/Eigene%20Dateien/NetBeansProjects/ISWAS/src/chrome/constructfinder/locale/en-US/
+
+resource org chrome://constructfinder/content/javascript/org/
+
+overlay chrome://browser/content/browser.xul chrome://constructfinder/content/browserOverlay.xul

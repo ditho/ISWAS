@@ -1,0 +1,8 @@
+content constructfinder chrome/constructfinder/content/
+skin constructfinder classic chrome/constructfinder/skin/classic/
+locale constructfinder de-DE chrome/constructfinder/locale/de-DE/
+locale constructfinder en-US chrome/constructfinder/locale/en-US/
+
+resource org chrome://constructfinder/content/javascript/org/
+
+overlay chrome://browser/content/browser.xul chrome://constructfinder/content/browserOverlay.xul

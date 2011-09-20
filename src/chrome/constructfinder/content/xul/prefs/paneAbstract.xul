@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE page SYSTEM "chrome://constructfinder/locale/constructFinder.dtd">
+<prefwindow id="prefISWAS" title="&prefs.title;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <script type="text/javascript" src="chrome://constructfinder/content/javascript/org/iswas/utils/Module.js" />
+    <script type="text/javascript" src="chrome://constructfinder/content/javascript/org/iswas/preferences/AbstractPane.js" />
+    <prefpane id="abstract">
+        <preferences>
+            <preference id="abstractAutorun" name="extensions.iswas.autorun" type="bool" />
+            <preference id="abstractAutorunSearchPref" name="extensions.iswas.autorun.search" type="bool" />
+            <preference id="abstractAutorunIdentPref" name="extensions.iswas.autorun.ident" type="bool" />
+            <preference id="abstractAutorunTabPref" name="extensions.iswas.autorun.tab" type="bool" />
+            <preference id="abstractAutorunNavPref" name="extensions.iswas.autorun.nav" type="bool" />
+            <preference id="abstractAutorunTreePref" name="extensions.iswas.autorun.tree" type="bool" />
+            <preference id="abstractToggleAreaSearchExpandPref" name="extensions.iswas.toggle.expand.search" type="bool" />
+            <preference id="abstractToggleAreaIdentExpandPref" name="extensions.iswas.toggle.expand.ident" type="bool" />
+            <preference id="abstractToggleAreaNavigationExpandPref" name="extensions.iswas.toggle.expand.nav" type="bool" />
+            <preference id="abstractToggleAreaSearchCollapsePref" name="extensions.iswas.toggle.collapse.search" type="bool" />
+            <preference id="abstractToggleAreaIdentCollapsePref" name="extensions.iswas.toggle.collapse.ident" type="bool" />
+            <preference id="abstractToggleAreaNavigationCollapsePref" name="extensions.iswas.toggle.collapse.nav" type="bool" />
+        </preferences>
+        <groupbox id="abstractGroupAutorun">
+            <caption disabled="false">
+                <checkbox id="abstractGroupCheckAutorun" label="&prefs.pane.abstract.autorun.title;" preference="abstractAutorun" />
+            </caption>
+            <description>&prefs.pane.abstract.autorun.description;</description>
+            <checkbox class="RDFSearch" id="abstractPanelAutorunSearch" label="&sidebar.search.title;&prefs.pane.abstract.autorun.search;" preference="abstractAutorunSearchPref" />
+            <checkbox class="RDFIdent" id="abstractPanelAutorunIdent" label="&sidebar.ident.title;&prefs.pane.abstract.autorun.ident;" preference="abstractAutorunIdentPref" />
+            <checkbox class="RDFNavigation" id="abstractPanelAutorunNav" label="&sidebar.nav.title;&prefs.pane.abstract.autorun.nav;" preference="abstractAutorunNavPref"/>
+            <checkbox class="RDFTab" id="abstractPanelAutorunTab" label="&sidebar.tab.title;&prefs.pane.abstract.autorun.tab;" preference="abstractAutorunTabPref"/>
+            <checkbox class="RDFTree" id="abstractPanelAutorunTree" label="&sidebar.tree.title;&prefs.pane.abstract.autorun.tree;" preference="abstractAutorunTreePref"/>
+        </groupbox>
+        <groupbox id="abstractGroupToggleArea">
+            <caption disabled="false" label="&prefs.pane.abstract.toggle.title;" />
+            <description>&prefs.pane.abstract.toggle.description;</description>
+            <grid>
+                <columns>
+                    <column id="RDFArea" flex="1" />
+                    <column id="RDFAutoExpand" flex="1" />
+                    <column id="RDFAutoCollapse" flex="1" />
+                </columns>
+                <rows>
+                    <row>
+                        <listheader label="&prefs.pane.abstract.toggle.area;" />
+                        <listheader label="&prefs.pane.abstract.toggle.expand;" />
+                        <listheader label="&prefs.pane.abstract.toggle.collapse;" />
+                    </row>
+                    <row>
+                        <description value="&sidebar.search.title;"/>
+                        <checkbox label="&prefs.pane.abstract.toggle.activated;" preference="abstractToggleAreaSearchExpandPref" />
+                        <checkbox label="&prefs.pane.abstract.toggle.activated;" preference="abstractToggleAreaSearchCollapsePref" />
+                    </row>
+                    <row>
+                        <description value="&sidebar.ident.title;"/>
+                        <checkbox label="&prefs.pane.abstract.toggle.activated;" preference="abstractToggleAreaIdentExpandPref" />
+                        <checkbox label="&prefs.pane.abstract.toggle.activated;" preference="abstractToggleAreaIdentCollapsePref" />
+                    </row>
+                    <row>
+                        <description value="&sidebar.nav.title;"/>
+                        <checkbox label="&prefs.pane.abstract.toggle.activated;" preference="abstractToggleAreaNavigationExpandPref" />
+                        <checkbox label="&prefs.pane.abstract.toggle.activated;" preference="abstractToggleAreaNavigationCollapsePref" />
+                    </row>
+                </rows>
+            </grid>
+        </groupbox>
+    </prefpane>
+</prefwindow>

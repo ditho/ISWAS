@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xul:tabbox xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<xul:tabs>
+<xul:tab id="tab1WAI">Tab1</xul:tab>
+<xul:tab id="tab2WAI">Tab2</xul:tab>
+<xul:tab id="tab3WAI">Tab3</xul:tab>
+</xul:tabs>
+<xul:tabpanels>
+<xul:tabpanel id="tabpanel1WAI">Erstes Tabpanel mit WAI-ARIA</xul:tabpanel>
+<xul:tabpanel id="tabpanel2WAI">Zweites Tabpanel mit WAI-ARIA</xul:tabpanel>
+<xul:tabpanel id="tabpanel3WAI">Drittes Tabpanel mit WAI-ARIA</xul:tabpanel>
+</xul:tabpanels>
+</xul:tabbox>

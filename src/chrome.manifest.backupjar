@@ -1,0 +1,6 @@
+content constructfinder jar:chrome/constructfinder.jar!/chrome/constructfinder/content/
+skin constructfinder classic jar:chrome/constructfinder.jar!/chrome/constructfinder/skin/classic/
+locale constructfinder de-DE jar:chrome/constructfinder.jar!/chrome/constructfinder/locale/de-DE/
+locale constructfinder en-US jar:chrome/constructfinder.jar!/chrome/constructfinder/locale/en-US/
+
+overlay chrome://browser/content/browser.xul chrome://constructfinder/content/browserOverlay.xul
