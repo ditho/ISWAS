@@ -1,4 +1,1 @@
-The project is about a Firefox add-on with the theme "Integrated Semantic Web Accessibility Search". Mostly it's an effort to create an 
-Abstraction for the control of many websites based on WAI-ARIA, RDF and WPSR to highlight the semantic of.
-
-Author: Thomas Beer
+Integrated Semantic Web Accessibility Search (ISWAS) is a Firefox-Addon. ISWAS helps you to navigate through website and create an abstraction to highlight the semantics of each website. The application based on many technologies like WAI-ARIA, RDF, XSLT and WPSR known as the Web Pattern Structure Recognizer.
