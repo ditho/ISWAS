@@ -8,9 +8,9 @@
     <em:description>ISWAS sucht Konstrukte auf Webseiten und zeichnet diese mit WAI-ARIA aus</em:description>
     <em:creator>Thomas Beer</em:creator>
     <em:homepageURL>http://www.uni-rostock.de</em:homepageURL>
-    <em:iconURL>chrome://constructfinder/skin/images/cover/extension.png</em:iconURL>
-    <em:optionsURL>chrome://constructfinder/content/xul/prefs/prefs.xul</em:optionsURL>
-    <em:aboutURL>chrome://constructfinder/content/about.xul</em:aboutURL>
+    <em:iconURL>chrome://iswas/skin/images/cover/extension.png</em:iconURL>
+    <em:optionsURL>chrome://iswas/content/xul/prefs/prefs.xul</em:optionsURL>
+    <em:aboutURL>chrome://iswas/content/about.xul</em:aboutURL>
     <em:unpack>true</em:unpack>
 	
 	<!-- Firefox -->

@@ -1,0 +1,12 @@
+#RDFExtensionMenu {
+	
+}
+#RDFSearchMenuItem {
+	list-style-image: url("chrome://iswas/skin/images/gnome/16/system-search.png");
+}
+#RDFIdentMenuItem {
+	list-style-image: url("chrome://iswas/skin/images/gnome/16/avatar-defaultc2g.png");
+}
+#RDFNavigationMenuItem {
+	list-style-image: url("chrome://iswas/skin/images/gnome/16/mail-send.png");
+}

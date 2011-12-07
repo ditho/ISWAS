@@ -1,0 +1,72 @@
+<?xml version="1.0" ?> 
+<!DOCTYPE page SYSTEM "chrome://iswas/locale/iswas.dtd">
+<page id="RDFSidebar" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <preferences>
+        <preference id="abstractToggleAreaSearchCollapsePref" name="extensions.iswas.toggle.collapse.search" type="bool" />
+        <preference id="abstractToggleAreaSearchExpandPref" name="extensions.iswas.toggle.expand.search" type="bool" />
+    </preferences>
+    <vbox>
+        <!--
+                ****************************************************************************
+                The identifier of the groupbox should be the name of the resource description
+                concat with a String "Group", e.g. "RDFSearchGroup". This would be used
+                in a javascript environment to get this groupboxes generic against search,
+                e.g. RDFSearch and RDFIdent are representing WPSR types in the annotation
+                type system and this type will be activate each specific area by searching
+                some constructs for them.
+                ****************************************************************************
+         -->
+        <groupbox id="RDFSearchGroup" preferenceCollapse="abstractToggleAreaSearchCollapsePref"  preferenceExpand="abstractToggleAreaSearchExpandPref" >
+            <!--
+                ****************************************************************************
+                The identifier of the checkbox should be the name of the resource description
+                concat with a String "Expanded", e.g. "RDFSearchExpanded". Do not forget to
+                set the attribute "down=true" as default to simulate the deactivation of the
+                groupbox by default. This would be used in a javascript environment to get 
+                this generic against search, e.g. to enable/disable (simulated) and
+                expand/collapse the search area of the sidebar.
+                ****************************************************************************
+            -->
+            <caption>
+                <checkbox id="RDFSearchExpanded" down="true" label="&sidebar.search.title;" />
+            </caption>
+            <!--
+                ****************************************************************************
+                The identifier of the textbox should be the name of the resource description
+                concat with a String "InputX", e.g. "RDFSearchInput0". The "X" in the String
+                should be the number of the input field begins with "0". All input fields
+                should be disabled by default by setting the attribute "disabled=true". This
+                would be used in a javascript environment to get this groupboxes generic
+                against search, e.g. RDFSearch and RDFIdent are representing WPSR types in
+                the annotation type system.
+                ****************************************************************************
+            -->
+            <hbox align="center">
+                <label class="sidebar" value="&sidebar.search.name;" accesskey="&sidebar.search.name.accesskey;" control="RDFSearchInput0" disabled="true"/>
+                <textbox id="RDFSearchInput0" flex="1" type="search" autocompletesearch="history" onfocus="select();" disabled="true"/>
+            </hbox>
+           <!--
+                ****************************************************************************
+                The identifier of the textbox should be the name of the resource description
+                concat with a String "Label", e.g. RDFSearchLabel. This would be used in a
+                javascript environment to get this label generic for other constructs against
+                search, e.g. RDFSearch and RDFIdent are representing WPSR types in the 
+                annotation type system.
+                The next and prev Button should be used as showing us below. There is no need
+                to implement an EventListener for the buttons if you are using the annotation
+                type concat with the String "Prev" or "next". The style of each button will be
+                differ by the class attribute.
+                ****************************************************************************
+            -->
+            <hbox align="center">
+                <label class="sidebar" />
+                <toolbarbutton id="RDFSearchPrev" class="RDFBackButton" tooltiptext="&sidebar.search.prev.tooltip;" label="&sidebar.prev.label;" disabled="true"/>
+                <toolbarbutton id="RDFSearchNext" class="RDFForwardButton" tooltiptext="&sidebar.search.next.tooltip;" label="&sidebar.next.label;" disabled="true"/>
+                <vbox flex="1">
+                    <label value="&sidebar.search.current.label;" class="RDFLabelArea" disabled="true" />
+                    <toolbarbutton id="RDFSearchLabel" label="" disabled="true" />
+                </vbox>
+            </hbox>
+        </groupbox>
+    </vbox>
+</page>

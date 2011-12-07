@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://iswas/skin/" type="text/css"?>
+
+<!DOCTYPE page SYSTEM "chrome://iswas/locale/iswas.dtd">
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	title="&about.title;" orient="vertical" buttons="accept" width="500" height="500">
+	<groupbox flex="1">
+		<caption label="&about.abstract;" disabled="false" />
+		<description>&about.abstract.extension.name;</description>
+		<description>&about.abstract.thema;</description>
+		<description>&about.abstract.autor;</description>
+	</groupbox>
+	<groupbox flex="1">
+		<caption label="&about.licence;" disabled="false"/>
+		<description>&about.licence.descripton;</description>
+		<description>&about.licence.link.gnome;</description>
+		<description>&about.licence.link.ubuntu;</description>
+	</groupbox>
+	<groupbox flex="1">
+		<caption label="&about.problems;" disabled="false"/>
+		<description>&about.problems.bug1;</description>
+		<description>&about.problems.bug2;</description>
+		<description>&about.problems.bug3;</description>
+	</groupbox>
+</dialog>

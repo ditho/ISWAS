@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://iswas/skin/browserOverlay.css" type="text/css"?>
+<!DOCTYPE window [
+<!ENTITY % iswasDTD SYSTEM "chrome://iswas/locale/iswas.dtd">
+%iswasDTD;
+<!ENTITY % browserDTD SYSTEM "chrome://browser/locale/browser.dtd" >
+%browserDTD;
+]>
+<overlay id="iswas" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <!--
+            ****************************************************************************
+            a string which is mapped on the id="strings_iswas" will be
+            replaced by the string found in the iswas.properties.
+            TODO: Test Javascript Code module StringBundle.jsm
+            ****************************************************************************
+    -->
+    <stringbundleset id="stringbundleset">
+        <stringbundle id="strings_iswas" src="chrome://iswas/locale/iswas.properties" />
+    </stringbundleset>
+    <!--
+            ****************************************************************************
+            JavaScript includes: have to be entered after the string-bundle-set
+            ****************************************************************************
+    -->
+    <script type="text/javascript" src="js/org/iswas/utils/Module.js" />
+    <script type="text/javascript" src="js/org/iswas/utils/WPSRClassLoader.js" />
+    <script type="text/javascript" src="js/org/iswas/utils/Parser.js" />
+    <script type="text/javascript" src="js/org/iswas/utils/DOMXPCOMWrapper.js" />
+    <script tpye="text/javascript" src="js/org/iswas/utils/XPathExpression.js" />
+    <script type="text/javascript" src="js/org/iswas/preferences/PreferenceManager.js" />
+    <script type="text/javascript" src="js/org/iswas/listener/ProgressListener.js" />
+    <script type="text/javascript" src="js/org/iswas/rdf/RDFPreference.js" />
+    <script type="text/javascript" src="js/org/iswas/model/WPSRModel.js" />
+    <script type="text/javascript" src="js/org/iswas/view/Sidebar.js" />
+    <script type="text/javascript" src="js/org/iswas/controller/handler/RDFSearchUIEventHandler.js" />
+    <script type="text/javascript" src="js/org/iswas/controller/handler/RDFIdentUIEventHandler.js" />
+    <script type="text/javascript" src="js/org/iswas/controller/handler/RDFTabUIEventHandler.js" />
+    <script type="text/javascript" src="js/org/iswas/controller/handler/RDFNavigationUIEventHandler.js" />
+    <!--<script type="text/javascript" src="js/org/iswas/controller/handler/RDFTreeUIEventHandler.js" />-->
+    <script type="text/javascript" src="js/org/iswas/controller/handler/ViewUIEventHandler.js" />
+    <script type="text/javascript" src="js/org/iswas/controller/ISWASController.js" />
+    <script type="text/javascript" src="js/org/iswas/preferences/PreferenceObserver.js" />
+    <script type="text/javascript" src="js/org/iswas/process/ISWAS.js" />
+    <!--
+            ****************************************************************************
+            overlay side-bar: including the menu item
+            ****************************************************************************
+    -->
+    <menupopup id="viewSidebarMenu">
+        <menuitem key="RDFSidebarKey" observes="viewRDFSidebar" />
+    </menupopup>
+    <!--
+            ****************************************************************************
+            TODO: comment
+            ****************************************************************************
+     -->
+    <broadcasterset id="mainBroadcasterSet">
+        <broadcaster id="viewRDFSidebar" label="&sidebar.title;"
+			autoCheck="false" type="checkbox" group="sidebar"
+			sidebarurl="chrome://iswas/content/xul/sidebar/RDFSidebar.xul"
+			sidebartitle="&sidebar.title;" oncommand="toggleSidebar('viewRDFSidebar');" />
+    </broadcasterset>
+    <!--
+            ****************************************************************************
+            overlay status-bar:
+            ****************************************************************************
+    -->
+    <statusbar id="status-bar">
+        <statusbarpanel id="RDFStatusbar" label="" />
+    </statusbar>
+    <!--
+            ****************************************************************************
+            overlay tools:
+            ****************************************************************************
+    -->
+    <menupopup id="menu_ToolsPopup">
+        <menu id="RDFExtensionMenu" class="menuitem-iconic" label="&key.extension.title;" insertbefore="javascriptConsole">
+            <menupopup id="RDFExtensionPopup">
+                <menuitem id="RDFSearchMenuItem" class="menuitem-iconic" label="&key.search.title;" key="RDFSearchKey" command="RDFSearchCommand" />
+                <menuitem id="RDFIdentMenuItem" class="menuitem-iconic" label="&key.ident.title;" key="RDFIdentKey" command="RDFIdentCommand" />
+                <menuitem id="RDFNavigationMenuItem" class="menuitem-iconic" label="&key.nav.title;" key="RDFNavigationKey" command="RDFNavigationCommand" />
+            </menupopup>
+        </menu>
+    </menupopup>
+    <!--
+            ****************************************************************************
+            keySet: side-bar, find login, find search field, find contact
+            ****************************************************************************
+    -->
+    <keyset id="mainKeyset">
+        <key id="RDFSidebarKey" command="viewRDFSidebar" key="&sidebar.open.commandkey;" modifiers="&sidebar.open.modifierskey;" />
+        <key id="RDFSearchKey" command="RDFSearchCommand" key="&key.search.commandkey;" modifiers="&key.search.modifierskey;" />
+        <key id="RDFIdentKey" command="RDFIdentCommand" key="&key.ident.commandkey;" modifiers="&key.ident.modifierskey;" />
+        <key id="RDFNavigationKey" command="RDFNavigationCommand" key="&key.nav.commandkey;" modifiers="&key.nav.modifierskey;" />
+    </keyset>
+    <!--
+            ****************************************************************************
+            commandset: Search, Ident
+            TODO: addEventListener for oncommand
+            ****************************************************************************
+    -->
+    <commandset id="mainCommandSet">
+        <command id="RDFSearchCommand" oncommand="ISWASController.run('RDFSearch', event);" />
+        <command id="RDFIdentCommand" oncommand="ISWASController.run('RDFIdent', event);" />
+        <command id="RDFNavigationCommand" oncommand="ISWASController.run('RDFNavigation', event);" />
+    </commandset>
+</overlay>

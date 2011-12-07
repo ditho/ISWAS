@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css" ?>
+<?xml-stylesheet href="chrome://browser/skin/browser.css" type="text/css" ?>
+<?xml-stylesheet href="chrome://iswas/skin/" type="text/css" ?>
+
+<?xul-overlay href="chrome://iswas/content/xul/prefs/paneAbstract.xul" ?>
+<?xul-overlay href="chrome://iswas/content/xul/prefs/paneDesign.xul" ?>
+<?xul-overlay href="chrome://iswas/content/xul/prefs/paneAdvanced.xul" ?>
+
+<!DOCTYPE page SYSTEM "chrome://iswas/locale/iswas.dtd">
+<prefwindow id="prefISWAS" title="&prefs.title;"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<prefpane id="abstract" label="&prefs.pane.abstract.title;" image="chrome://iswas/skin/images/gnome/32/applications-system.png"></prefpane>
+	<prefpane id="design" label="&prefs.pane.design.title;" image="chrome://iswas/skin/images/gnome/32/applications-graphics.png"></prefpane>
+	<prefpane id="advanced" label="&prefs.pane.advanced.title;" image="chrome://iswas/skin/images/gnome/32/preferences-desktop-accessibility.png"></prefpane>
+</prefwindow>

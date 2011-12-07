@@ -1,8 +1,8 @@
-content constructfinder chrome/constructfinder/content/
-skin constructfinder classic chrome/constructfinder/skin/classic/
-locale constructfinder de-DE chrome/constructfinder/locale/de-DE/
-locale constructfinder en-US chrome/constructfinder/locale/en-US/
+content iswas chrome/iswas/content/
+skin iswas classic chrome/iswas/skin/classic/
+locale iswas de-DE chrome/iswas/locale/de-DE/
+locale iswas en-US chrome/iswas/locale/en-US/
 
-resource org chrome://constructfinder/content/javascript/org/
+resource org chrome://iswas/content/js/org/
 
-overlay chrome://browser/content/browser.xul chrome://constructfinder/content/browserOverlay.xul
+overlay chrome://browser/content/browser.xul chrome://iswas/content/browserOverlay.xul

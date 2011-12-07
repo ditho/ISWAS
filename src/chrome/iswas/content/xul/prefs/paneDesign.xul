@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE page SYSTEM "chrome://iswas/locale/iswas.dtd">
+<prefwindow id="prefISWAS" title="&prefs.title;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<prefpane id="design">
+		<preferences>
+			<preference id="designAnimationNoPref" name="extensions.iswas.design.animation.no" type="bool" />
+			<preference id="designAnimationBasicPref" name="extensions.iswas.design.animation.basic" type="bool" />
+			<preference id="designAnimationComplexPref" name="extensions.iswas.design.animation.complex" type="bool" />
+		</preferences>
+		<groupbox id="designGroupAnimation">
+			<caption label="&prefs.pane.design.animation.title;" disabled="false" />
+			<description>&prefs.pane.design.animation.description;</description>
+			<radiogroup id="groupAnimation">
+				<radio src="chrome://iswas/skin/images/ubuntu/no.png" label="&prefs.pane.design.animation.no;" id="designPanelAnimationNo" preference="designAnimationNoPref"/>
+				<radio src="chrome://iswas/skin/images/ubuntu/basic.png" label="&prefs.pane.design.animation.basic;" id="designPanelAnimationBasic" preference="designAnimationBasicPref" disabled="true" />
+				<radio src="chrome://iswas/skin/images/ubuntu/complex-c2g.png" label="&prefs.pane.design.animation.complex;" id="designPanelAnimationComplex" preference="designAnimationComplexPref" disabled="true" />
+			</radiogroup>
+		</groupbox>
+		<!-- <groupbox id="designGroupSidebar"><caption label="&prefs.pane.design.sidebar.title;"/></groupbox>-->
+	</prefpane>
+</prefwindow>

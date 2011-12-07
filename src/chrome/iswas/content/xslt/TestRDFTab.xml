@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml-stylesheet type="text/xsl" href="tabbox.xslt"?>
+<Text xmlns:xsi="http://ww.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="RDFTab.xslt">
+    <head>
+        <title>
+    ISWAS: Firefox Erweiterung</title>
+<meta name="Programmierung" content="THOMAS BEER" />
+<meta name="DISCRIPTION" content="Intelligent Semantic Web Accessibility Search" />
+<meta name="KEYWORDS" content="Semantik, ISWAS, Accessibility" />
+<meta name="robots" content="index, follow" />
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=ISO-8859-1"/>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Style-Type" content="application/x-httpd-php" />
+<link rel="stylesheet" type="text/css" href="skin/default/default.css" media="screen,projection" />        <script type="text/javascript" src="content/js/FormValidation.js"></script>
+        <script type="text/javascript" src="content/js/AbstractWebsite.js"></script>
+        <script type="text/javascript" src="content/js/tab.js"></script>
+    </head>
+    <body>
+        <div id="container">
+        <div id="banner">
+    <a href="#firstContent" title="Banner, Suchbereich und Navigation ueberspringen.">Skip</a>
+    <img src="skin/global/gnome/iswas.png"
+         alt="Logo finden von: Suchfeld, Loginbereich, Artikelbrowsing und dem Kontaktbereich"/>
+    <h1>Integrated Semantic Web Accessibility Search</h1>
+    <h2>Diplomarbeit von Thomas Beer</h2>
+</div><div id="search">
+    <form id="searchform" action="#searchform" method="post">
+        <fieldset id="searchFieldSet">
+            <label for="query">Artikelsuche:</label>
+            <input id="query" type="text" required="true"/>
+            <input id="submitSearch" type="submit" value="Suchen" disabled="true" title="Die Suche nach Artikeln starten"/>
+        </fieldset>
+    </form>
+</div>
+<div id="navigation">
+    <ul>
+        <li><a href="index.php?kategorie_ID=1"  title="Artikel der Willkommensseite anzeigen">Start</a></li>
+        <li><a href="index.php?kategorie_ID=2" id="current" title="Artikel der Firefox-Erweiterung anzeigen">ISWAS</a></li>
+        <li><a href="index.php?kategorie_ID=3"  title="Gaestebucheintraege anzeigen">Gaestebuch</a></li>
+        <li><a href="index.php?kategorie_ID=4"  title="mit den Autoren dieser Seite in Kontakt treten.">Kontakt</a></li>
+    </ul>
+</div>            <div id="content">
+                <p class="info">
+Diese Seite zeigt eine kurze Beschreibung der Firefox-Erweiterung ISWAS, als auch semantische Konstrukte, welche von der Erweiterung gefunden und aufbereitet werden. Jeder Bereich wird doppelt abgebildet, damit ein vorher/nacher Vergleich möglich ist.</p>
+                <div class="subject">
+                    <h1 id="firstContent">ISWAS</h1>
+<blockquote>
+    <p>So einfach wie moeglich. Aber nicht einfacher!
+        <cite>
+            Albert Einstein, dt.-amerik. Physiker
+        </cite>
+    </p>
+</blockquote>                </div>
+                <div class="subject">
+<h2>
+Firefox-Erweiterung: Einführun<span class="date">
+20.1.11 18:31</span>
+</h2>
+<p>
+ISWAS ist eine Firefox-Erweiterung und untersucht Webseiten auf semantische Beziehungen. <br /><br />Die Konzepte zur Suche von semantischen Konstrukten gehen aus der Diplomarbeit von Mathias Köhnke hervor. Dabei wurde ein sogenan ... <dl><dt><img src="skin/global/gnome/32/mail-read.png" alt="mehr" /></dt>
+<dd><a href="index.php?setContentID=1&amp;content_ID=25&amp;kategorie_ID=2" title="Den Artikel vollstaendig anzeigen.">mehr...</a></dd></dl></p>
+</div>
+<div class="subject">
+    <h2>Test von HTML-Elementen ohne WAI-ARIA<span class="date">23.03.11 20:15</span></h2>
+    <p>Der Test zeigt HTML-Elemente bzw. Bereiche die nicht semantisch
+        ausgezeichnet worden sind. Damit die Klassifikation der Elemente funktioniert,
+        muss wenigstens die Struktur und die verwendeten Bezeichnungen stimmen.</p>
+    <form id="login" action="#login" method="post">
+        <fieldset>
+            <legend>Loginbereich ohne WAI-ARIA</legend>
+            <label for="userOWAI">Benutzer*:</label>
+            <input id="userOWAI" type="text" required="true" />
+            <label for="pwdOWAI">Passwort*:</label>
+            <input id="pwdOWAI" type="password" required="true" />
+            <label for="submitLoginOWAI"></label>
+            <input id="submitLoginOWAI" type="submit" value="Anmelden" disabled="true" title="ohne WAI-ARIA anmelden"/>
+        </fieldset>
+    </form>
+    <form id="searchOWAI" action="#searchOWAI" method="post">
+        <fieldset>
+            <legend>Suchbereich ohne WAI-ARIA</legend>
+            <label for="queryOWAI">Suchen*:</label>
+            <input id="queryOWAI" type="text" required="true" />
+            <label for="submitQueryOWAI"></label>
+            <input id="submitQueryOWAI" type="submit" value="Suchen" disabled="true" title="Ganz viel ohne WAI-ARIA suchen"/>
+        </fieldset>
+    </form>
+    <!-- Tabbox Widget -->
+    <h3>Visuell aufbereite Tabbox</h3>
+    <p>Diese Tabbox ist nur visuell aufbereitet und kann nicht "out of the box"
+    per Tastatur angesteuert werden. Daher ist dieses Widget nicht sehr 
+    zugnglich. Eine Annotation durch WAI-ARIA mit einer anschlieenden
+    Transformation in die XML User Interface Language (XUL) erweitert das Widget
+    um eine Tastatursteuerung mittels Pfeiltasten.</p>
+    <div id="tabbox">
+        <ul id="tabs">
+            <li id="tab1">Tab1</li>
+            <li id="tab2">Tab2</li>
+            <li id="tab3">Tab3</li>
+        </ul>
+        <div class="floatBreak"></div>
+        <ul id="tabpanels">
+            <li id="tabpanel1"><p>Erstes Tabpanel <b>ohne</b> WAI-ARIA</p></li>
+            <li id="tabpanel2"><p>Zweites Tabpanel <b>ohne</b> WAI-ARIA</p></li>
+            <li id="tabpanel3"><p>Drittes Tabpanel <b>ohne</b> WAI-ARIA</p></li>
+        </ul>
+    </div>
+    <!-- Tree Widget -->
+    <ul id="tree">
+        <li class="treeitem">
+            <a href="#" id="a1">Knoten der Ebene 1</a>
+            <ul class="group">
+                <li class="treeitem">
+                    <a href="#" id="a12">Knoten der Ebene 1.1</a>
+                    <ul class="group">
+                        <li class="treeitem">
+                            <a href="#">Blattknoten der Ebene 1.1.1</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="treeitem">
+            <a href="#">Blattknoten der Ebene 1</a>
+        </li>
+    </ul>
+</div>
+
+<div class="subject">
+    <h2>Test von HTML-Elementen mit WAI-ARIA<span class="date">23.03.11 20:15</span></h2>
+    <p>Dieser Test zeigt Elemente die von einem Webentwickler mit WAI-ARIA
+        ausgezeichnet worden sind. Daher ist es enorm wichtig die Auszeichnungen
+        innerhalb der Firefox-Erweiterung zu erhalten bzw. eine Transformation in
+        eine bessere Darstellung zu vollziehen.</p>
+    <form id="loginWAI" action="#loginWAI" method="post" role="ident">
+        <fieldset>
+            <legend>Loginbereich mit WAI-ARIA</legend>
+            <label for="userWAI">Benutzer*:</label>
+            <input id="userWAI" type="text" required="true" />
+            <label for="pwdWAI">Passwort*:</label>
+            <input id="pwdWAI" type="password" required="true" />
+            <label for="submitLoginWAI"></label>
+            <input id="submitLoginWAI" type="submit" value="Anmelden" disabled="true" title="mit WAI-ARIA anmelden"/>
+        </fieldset>
+    </form>
+    <form id="searchWAI" action="#searchWAI" method="post" role="search">
+        <fieldset>
+            <legend>Suchbereich mit WAI-ARIA</legend>
+            <label for="queryWAI">Suchen*:</label>
+            <input id="queryWAI" type="text" value=""/>
+            <label for="submitQueryWAI"></label>
+            <input id="submitQueryWAI" type="submit" value="Suchen" disabled="true" title="Ganz viel mit WAI-ARIA suchen"/>
+        </fieldset>
+    </form>
+    <!-- Tabbox Widget -->
+    <h3>Visuell aufbereite Tabbox mit WAI-ARIA</h3>
+    <p>Diese Tabbox ist ebenfalls nur visuell aufbereitet und kann nicht
+    "out of the box" per Tastatur angesteuert werden. Dieses Widget kann aber
+    durch assitive System verstanden werden, da es mit WAI-ARIA ausgezeichnet ist.
+    Die Zugnglichkeit kann durch WAI-ARIA viel besser geleistet werden, da die
+    Elemente eine vollig neue Semantik bekommen. Bei der Analyse in WPSR bentig
+    man keine Klassifikation bzw. Evaluation der Kandidaten. In der Firefox-Erweiterung
+    kann eine Transformation auf Basis von WAI-ARIA die Elemente viel besser abbilden
+    und damit die richtige Darstellung fr das Widget bestimmen.</p>
+    <div id="tabboxWAI">
+        <ul id="tabsWAI">
+            <li id="tab1WAI" role="tab" aria-controls="tabpanel1WAI">Tab1</li>
+            <li id="tab2WAI" role="tab" aria-controls="tabpanel2WAI">Tab2</li>
+            <li id="tab3WAI" role="tab" aria-controls="tabpanel3WAI">Tab3</li>
+        </ul>
+        <div class="floatBreak"></div>
+        <ul id="tabpanelsWAI">
+            <li id="tabpanel1WAI" role="tabpanel"><p>Erstes Tabpanel <b>mit</b> WAI-ARIA</p></li>
+            <li id="tabpanel2WAI" role="tabpanel"><p>Zweites Tabpanel <b>mit</b> WAI-ARIA</p></li>
+            <li id="tabpanel3WAI" role="tabpanel"><p>Drittes Tabpanel <b>mit</b> WAI-ARIA</p></li>
+        </ul>
+    </div>
+    <ul id="treeWAI" role="tree">
+        <li role="treeitem" aria-haspopup="true" aria-controls="a1WAI">
+            <a href="#" id="a1WAI">Knoten der Ebene 1</a>
+            <ul role="group">
+                <li role="treeitem" aria-haspopup="true" aria-controls="a12WAI">
+                    <a href="#" id="a12WAI">Knoten der Ebene 1.1</a>
+                    <ul role="group">
+                        <li role="treeitem" aria-haspopup="false">
+                            <a href="#">Blattknoten der Ebene 1.1.1</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li role="treeitem" aria-haspopup="false">
+            <a href="#">Blattknoten der Ebene 1</a>
+        </li>
+    </ul>
+</div>                <div class="floatBreak"></div>
+            </div>
+                        <div id="w3c">
+                <ul>
+    <li>
+        <a href="http://validator.w3.org/check?uri=referer" title="Diese Seite auf W3C XHTML 1.0 Strict konformitaet validieren.">
+            <img src="http://www.w3.org/Icons/valid-xhtml10-blue" alt="Valid XHTML 1.0 Strict" id="xhtml"/>
+        </a>
+    </li>
+    <li>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer" title="Die Stylesheetdateien dieser Seite auf W3C CSS konformitaet validieren.">
+            <img src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!" id="css"/>
+        </a>
+    </li>
+</ul>
+
+
+            </div>
+            <div id="footer">
+                <ul>
+    <li>
+        <a href="index.php?kategorie_ID=5" title="Informationen ueber den Autor und Lizenzenbestimmungen anzeigen">Ueber ISWAS</a>
+    </li>
+    <li>
+        <a href="admin/index.php?kategorie_ID=1&amp;content=true&amp;edit=false&amp;list=true" title="Den Inhalt dieser Seite mit einem CMS beabeiten">Administration</a>
+    </li>
+</ul>            </div>
+        </div>
+    </body>
+</Text>

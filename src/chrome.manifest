@@ -1,8 +1,8 @@
-content constructfinder file:///C:/Dokumente%20und%20Einstellungen/tb006/Eigene%20Dateien/NetBeansProjects/ISWAS/src/chrome/constructfinder/content/
-skin constructfinder classic file:///C:/Dokumente%20und%20Einstellungen/tb006/Eigene%20Dateien/NetBeansProjects/ISWAS/src/chrome/constructfinder/skin/classic/
-locale constructfinder de-DE file:///C:/Dokumente%20und%20Einstellungen/tb006/Eigene%20Dateien/NetBeansProjects/ISWAS/src/chrome/constructfinder/locale/de-DE/
-locale constructfinder en-US file:///C:/Dokumente%20und%20Einstellungen/tb006/Eigene%20Dateien/NetBeansProjects/ISWAS/src/chrome/constructfinder/locale/en-US/
+content iswas file:///C:/Programme/cygwin/home/tb006/projects/ISWAS/src/chrome/iswas/content/
+skin iswas classic file:///C:/Programme/cygwin/home/tb006/projects/ISWAS/src/chrome/iswas/skin/classic/
+locale iswas de-DE file:///C:/Programme/cygwin/home/tb006/projects/ISWAS/src/chrome/iswas/locale/de-DE/
+locale iswas en-US file:///C:/Programme/cygwin/home/tb006/projects/ISWAS/src/chrome/iswas/locale/en-US/
 
-resource org chrome://constructfinder/content/javascript/org/
+resource org chrome://iswas/content/js/org/
 
-overlay chrome://browser/content/browser.xul chrome://constructfinder/content/browserOverlay.xul
+overlay chrome://browser/content/browser.xul chrome://iswas/content/browserOverlay.xul

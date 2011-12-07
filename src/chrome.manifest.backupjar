@@ -1,6 +1,6 @@
-content constructfinder jar:chrome/constructfinder.jar!/chrome/constructfinder/content/
-skin constructfinder classic jar:chrome/constructfinder.jar!/chrome/constructfinder/skin/classic/
-locale constructfinder de-DE jar:chrome/constructfinder.jar!/chrome/constructfinder/locale/de-DE/
-locale constructfinder en-US jar:chrome/constructfinder.jar!/chrome/constructfinder/locale/en-US/
+content iswas jar:chrome/iswas.jar!/chrome/iswas/content/
+skin iswas classic jar:chrome/iswas.jar!/chrome/iswas/skin/classic/
+locale iswas de-DE jar:chrome/iswas.jar!/chrome/iswas/locale/de-DE/
+locale iswas en-US jar:chrome/iswas.jar!/chrome/iswas/locale/en-US/
 
-overlay chrome://browser/content/browser.xul chrome://constructfinder/content/browserOverlay.xul
+overlay chrome://browser/content/browser.xul chrome://iswas/content/browserOverlay.xul
