@@ -1,46 +1,51 @@
 // define the class in a closure and do not overfill the global namespace
-(function(){
+(function () {
+    //'use strict';
     // add some modules that are required to implement this module
     // e.g. Module.require(name, version);
     Module.require("org.iswas.rdf.RDFPreference");
     //Module.require("org.iswas.utils.InstanceCache");
     // define a new classname by setting their namespace and an optional version
     // e.g. ClassName = Module.createNS("namespace", version);
-    WPSRModel = Module.createNS("org.iswas.model.WPSRModel",0.1);
+    var WPSRModel = Module.createNS("org.iswas.model.WPSRModel", 0.1);
     // define the symbols that can be imported by other modules
     // e.g. ClassName.EXPORTED_SYMBOLS= ["@symbols"];
-    WPSRModel.EXPORTED_SYMBOLS= ["addObserver","deleteObserver","deleteObservers"
-                                ,"checkFrequency","setInputValue","getInputValues"
-                                ,"getCandidate","deleteCandidate","getIndex","next"
-                                ,"prev","size","trigger","isTriggered","clear"];
+    WPSRModel.EXPORTED_SYMBOLS = ["addObserver", "deleteObserver", "deleteObservers",
+                                  "checkFrequency", "setInputValue", "getInputValues",
+                                  "getCandidate", "deleteCandidate", "getIndex", "next",
+                                  "prev", "size", "trigger", "isTriggered", "clear"];
     // define your symbols in a closure to get real privacy :-)
     // and do not forget to register the @public/@static symbols for the class!
-    (function(){
+    (function () {
         // set up short names for used modules in this class
         // e.g. ClassName = org.iswas.package.ClassName;
         //InstanceCache = org.iswas.utils.InstanceCache;
         Components.utils.import("resource://org/iswas/utils/InstanceCache.jsm");
         Components.utils.import("resource://org/iswas/utils/Observeable.jsm");
-        RDFPreference = org.iswas.rdf.RDFPreference;
-        WPSRClassLoader = org.iswas.utils.WPSRClassLoader;
-        // REGISTER THE @public/@static SYMBOLS FOR THE CLASS
-        // e.g. ClassName.method = method;
-        WPSRModel.addObserver = addObserver;
-        WPSRModel.deleteObserver = deleteObserver;
-        WPSRModel.deleteObservers = deleteObservers;
-        WPSRModel.checkFrequency = checkFrequency;
-        WPSRModel.setInputValue = setInputValue;
-        WPSRModel.getInputValues = getInputValues;
-        WPSRModel.getCandidate = getCandidate;
-        WPSRModel.deleteCandidate = deleteCandidate;
-        WPSRModel.addCandidate = addCandidate;
-        WPSRModel.getIndex = getIndex;
-        WPSRModel.next = next;
-        WPSRModel.prev = prev;
-        WPSRModel.size = size;
-        WPSRModel.trigger = trigger;
-        WPSRModel.isTriggered = isTriggered;
-        WPSRModel.clear = clear;
+        var RDFPreference = org.iswas.rdf.RDFPreference;
+        var WPSRClassLoader = org.iswas.utils.WPSRClassLoader;
+        // DEFINE THE @private SYMBOLS FOR THE CLOSURE
+        // note it is quite good to set an underscore before each symbol
+        /**
+         * The model will inform any Observer about model changes with this attribute.
+         */
+        var observable = Observeable.create();
+        /**
+         * All instances from the model are cached centrally.
+         */
+        var cache = InstanceCache.create("org.iswas.model.WPSRModel");
+        /**
+         * The instance will be updated by a frequency.
+         * 
+         * TODO: create a specific object
+         */
+        var frequency = {};
+        /**
+         * All input values from the view are stored in this map.
+         * 
+         * TODO: create a specific object
+         */
+        var inputMap = {};
         // DEFINE THE @public/@static SYMBOLS FOR THE CLOSURE
         /**
          * Creates a new WPSRModel handled private by this module. If any 
@@ -51,16 +56,32 @@
          * @throws Error - if the resource description is not available
          */
         function create(rdf) {
-            if(!rdf)
+            if (!rdf) {
                 throw new Error("org.iswas.model.WPSRModel[no resource description available]");
-            var frequency = RDFPreference.get(rdf).getUpdateFrequency(content.window.location);
+            }
+            var frequency = getUpdateFrequency(rdf);
             var key = rdf + frequency;
-            if(_cache.hasInstance(key)) {
-                return _cache.getInstance(key);
+            if (cache.hasInstance(key)) {
+                return cache.getInstance(key);
             }
             var instance = new Instance(rdf);
-            _cache.setInstance(key, instance);
+            cache.setInstance(key, instance);
             return instance;
+        }
+        /**
+         * Get the update frequency.
+         *
+         * @param rdf - resource description
+         */
+        function getUpdateFrequency(rdf) {
+            var preference = RDFPreference.get(rdf);
+            return preference.getUpdateFrequency();
+        }
+        /**
+         * Get the host of the current location.
+         */
+        function getHost() {
+            return content.window.location.host;
         }
         /**
          * Add an Observer to inform about model changes.
@@ -68,7 +89,7 @@
          * @param {Object} o - observer to inform
          */
         function addObserver(o) {
-            _observeable.addObserver(o);
+            observable.addObserver(o);
         }
         /**
          * Delete an Observer and do not inform anymore about model changes.
@@ -76,33 +97,64 @@
          * @param {Object} o - observer to delete
          */
         function deleteObserver(o) {
-            _observeable.deleteObserver(o);
+            observable.deleteObserver(o);
         }
         /**
          * Delete all Observers and do not inform anyone about model changes.
          */
         function deleteObservers() {
-            _observeable.deleteObservers();
+            observable.deleteObservers();
+        }
+        /**
+         * Notify all Observers about model changes
+         *
+         * @param o - notifier
+         * @param arg - any Object or message
+         */
+        function notifyObserver(o, arg) {
+            observable.notifyObserver(o, arg);
+        }
+        /**
+         * Show that the model has been changed.
+         */
+        function setChanged() {
+            observable.setChanged();
+        }
+        /**
+         * Are there values for the current host available.
+         */
+        function initInputMapValue() {
+            var host = getHost();
+            if (!inputMap[host]) {
+                inputMap[host] = {};
+            }
+        }
+        /**
+         * Store the input value in the input map.
+         * 
+         * @param input - the input field.
+         */
+        function setInputMapValue(input) {
+            var host = getHost();
+            inputMap[host][input.getAttribute("id")] = input.value;
         }
         /**
          * Set the input for the current page.
          *
-         * @param rdf
-         * @param input
+         * @param rdf - resource description
+         * @param input - the input field.
          */
         function setInputValue(rdf, input) {
-            var host = content.window.location.host;
-            if(!_inputMap[host])
-                _inputMap[host] = {};
-            _inputMap[host][input.getAttribute("id")] = input.value;
-            _observeable.setChanged();
-            _observeable.notifyObserver(WPSRModel, rdf);
+            initInputMapValue();
+            setInputMapValue();
+            setChanged();
+            notifyObserver(WPSRModel, rdf);
         }
         /**
          * Get the inputs for the current page
          */
         function getInputValues() {
-            return _inputMap[content.window.location.host];
+            return inputMap[getHost()];
         }
         /**
          * Set the uri for the resource description. If the uri is changed for
@@ -112,11 +164,11 @@
          */
         function checkFrequency(rdf) {
             //dump("org.iswas.model.WPSRModel.setURI[rdf=" + rdf + "]\n");
-            var frequency = RDFPreference.get(rdf).getUpdateFrequency(content.window.location);
-            if(!_frequency[rdf] || _frequency[rdf] != frequency) {
-                _frequency[rdf] = frequency;
-                _observeable.setChanged();
-                _observeable.notifyObserver(WPSRModel, rdf);
+            var currentFrequency = getUpdateFrequency(rdf);
+            if (!frequency[rdf] || frequency[rdf] !== currentFrequency) {
+                frequency[rdf] = currentFrequency;
+                setChanged();
+                notifyObserver(WPSRModel, rdf);
             }
         }
         /**
@@ -248,12 +300,14 @@
          * @throws Error - if the analysis is not triggered before
          * @return the candidate or null if there is no one.
          */
-        Instance.prototype.getCandidate = function(index){
-            if(!this.triggered)
+        Instance.prototype.getCandidate = function (index) {
+            if (!this.isTriggered()) {
                 throw new Error("org.iswas.model.WPSRModel.getCandidate[can not fetch any candidate, trigger the analysis first]");
-            if(!this.candidateList || this.candidateList.isEmpty())
+            }
+            if (!this.candidateList || this.candidateList.isEmpty()) {
                 return null;
-            if(index != 0 && !index) {
+            }
+            if (index !== 0 && !index) {
                 return this.candidateList.get(this.index);
             }
             return this.candidateList.get(index);
@@ -266,18 +320,20 @@
          * @param {Number} index
          * @throws Error - if the analysis is not triggered before
          */
-        Instance.prototype.deleteCandidate = function(index) {
-            if(!this.triggered)
+        Instance.prototype.deleteCandidate = function (index) {
+            if (!this.isTriggered()) {
                 throw new Error("org.iswas.model.WPSRModel.deleteCandidate[can not delete any candidate, trigger the analysis first]");
-            if(!this.candidateList || this.candidateList.isEmpty())
+            }
+            if (!this.candidateList || this.candidateList.isEmpty()) {
                 return;
-            if(index != 0 && !index) {
-                this.candidateList.remove(this.index);
+            }
+            if (index !== 0 && !index) {
+                this.candidateList.remove(this.getIndex());
             } else {
                 this.candidateList.remove(index);
             }
-            _observeable.setChanged();
-            _observeable.notifyObserver(this, this.rdf);
+            setChanged();
+            notifyObserver(this, this.rdf);
         };
         /**
          * Add an candidate to the list of candidates.
@@ -287,29 +343,35 @@
          * @param {Object} candidate - to add
          * @throws Error - if the candidate is not defined
          */
-        Instance.prototype.addCandidate = function(candidate) {
-            if(!candidate)
+        Instance.prototype.addCandidate = function (candidate) {
+            if (!candidate) {
                 throw new Error("org.iswas.model.WPSRModel.addCandidate[candidate is not defined]");
-            if(!candidate.getXMLString)
+            }
+            if (!candidate.getXMLString) {
                 throw new Error("org.iswas.model.WPSRModel.addCandidate[candidate.getXMLString is not defined]");
-            if(!candidate.getRole)
+            }
+            if (!candidate.getRole) {
                 throw new Error("org.iswas.model.WPSRModel.addCandidate[candidate.getRole is not defined]");
-            if(!candidate.getXPathExpression)
+            }
+            if (!candidate.getXPathExpression) {
                 throw new Error("org.iswas.model.WPSRModel.addCandidate[candidate.getXPathExpression is not defined]");
-            if(!candidate.setXPathExpression)
+            }
+            if (!candidate.setXPathExpression) {
                 throw new Error("org.iswas.model.WPSRModel.addCandidate[candidate.setXPathExpression is not defined]");
-            if(!candidate.getScore)
+            }
+            if (!candidate.getScore) {
                 throw new Error("org.iswas.model.WPSRModel.addCandidate[candidate.getScore is not defined]");
+            }
             this.candidateList.add(candidate);
-            _observeable.setChanged();
-            _observeable.notifyObserver(this, this.rdf);
+            setChanged();
+            notifyObserver(this, this.rdf);
         };
         /**
          * Get the index of the current candidate.
          *
          * @return Number - the index
          */
-        Instance.prototype.getIndex = function() {
+        Instance.prototype.getIndex = function () {
             return this.index;
         };
         /**
@@ -318,16 +380,18 @@
          *
          * @throws Error - if the analysis is not triggered before
          */
-        Instance.prototype.next = function() {
+        Instance.prototype.next = function () {
             // ArrayList<String> candidateList
-            if(!this.triggered)
+            if (!this.isTriggered()) {
                 throw new Error("org.iswas.model.WPSRModel.next[can not increase the index, trigger the analysis first]");
-            if(this.candidateList == null || this.candidateList.isEmpty())
+            }
+            if (this.candidateList === null || this.candidateList.isEmpty()) {
                 return;
+            }
             this.index++;
             this.index %= this.size();
-            _observeable.setChanged();
-            _observeable.notifyObserver(this, this.rdf);
+            setChanged();
+            notifyObserver(this, this.rdf);
         };
         /**
          * Cycling negative pass throug of the WPSR candidate list. All
@@ -335,40 +399,43 @@
          *
          * @throws Error - if the analysis is not triggered before
          */
-        Instance.prototype.prev = function() {
+        Instance.prototype.prev = function () {
             // ArrayList<String> candidateList
-            if(!this.triggered)
+            if (!this.isTriggered()) {
                 throw new Error("org.iswas.model.WPSRModel.prev[can not decrease the index, trigger the analysis first]");
-            if(this.candidateList == null || this.candidateList.isEmpty())
+            }
+            if (this.candidateList === null || this.candidateList.isEmpty()) {
                 return;
+            }
             this.index--;
             this.index += this.size();
             this.index %= this.size();
-            _observeable.setChanged();
-            _observeable.notifyObserver(this, this.rdf);
+            setChanged();
+            notifyObserver(this, this.rdf);
         };
         /**
          * Get the number of the available WPSR candidates.
          *
          * @returns Number - the size
          */
-        Instance.prototype.size = function() {
+        Instance.prototype.size = function () {
             // ArrayList<String> candidateList
-            if(!this.candidateList)
+            if (!this.candidateList) {
                 return 0;
+            }
             return this.candidateList.size();
         };
         /**
          * Trigger the WPSR analysis and get new candidates.
          */
-        Instance.prototype.trigger = function() {
-            _observeable.setChanged();
-            _observeable.notifyObserver(this, this.rdf);
+        Instance.prototype.trigger = function () {
+            setChanged();
+            notifyObserver(this, this.rdf);
             this.candidateList = WPSRClassLoader.trigger(this.rdf, "wpsr.WPSR");
             //this.cnadidateList = WPSRClassLoader.trigger(this.rdf, "wpsr.WPSRDOM");
             this.triggered = true;
-            _observeable.setChanged();
-            _observeable.notifyObserver(this, this.rdf);
+            setChanged();
+            notifyObserver(this, this.rdf);
         };
         /**
          * Show whether the analysis is also triggered or not. Note: if it is
@@ -376,26 +443,38 @@
          *
          * @return boolean - trigged or not
          */
-        Instance.prototype.isTriggered = function() {
+        Instance.prototype.isTriggered = function () {
             return this.triggered;
         };
         /**
          * Set the model not triggered for the resource description.
          */
-        Instance.prototype.clear = function() {
+        Instance.prototype.clear = function () {
             this.triggered = false;
-        }
+        };
         /**
          * debug information
          */
-        Instance.prototype.toString = function() {
+        Instance.prototype.toString = function () {
             return "org.iswas.model.WPSRModel[rdf=" + this.rdf + "]";
         };
-        // DEFINE THE @private SYMBOLS FOR THE CLOSURE
-        // note it is quite good to set an underscore before each symbol
-        var _observeable = Observeable.create();
-        var _cache = InstanceCache.create("org.iswas.model.WPSRModel");
-        var _frequency = {};
-        var _inputMap = {};
+        // REGISTER THE @public/@static SYMBOLS FOR THE CLASS
+        // e.g. ClassName.method = method;
+        WPSRModel.addObserver = addObserver;
+        WPSRModel.deleteObserver = deleteObserver;
+        WPSRModel.deleteObservers = deleteObservers;
+        WPSRModel.checkFrequency = checkFrequency;
+        WPSRModel.setInputValue = setInputValue;
+        WPSRModel.getInputValues = getInputValues;
+        WPSRModel.getCandidate = getCandidate;
+        WPSRModel.deleteCandidate = deleteCandidate;
+        WPSRModel.addCandidate = addCandidate;
+        WPSRModel.getIndex = getIndex;
+        WPSRModel.next = next;
+        WPSRModel.prev = prev;
+        WPSRModel.size = size;
+        WPSRModel.trigger = trigger;
+        WPSRModel.isTriggered = isTriggered;
+        WPSRModel.clear = clear;
     })();
 })();

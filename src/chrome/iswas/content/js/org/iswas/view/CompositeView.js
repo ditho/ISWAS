@@ -14,13 +14,32 @@
     (function(){
         // REGISTER THE @public/@static SYMBOLS FOR THE CLASS
         // e.g. ClassName.method = method;
+        Components.utils.import("resource://org/iswas/utils/InstanceCache.jsm");
         CompositeView.create = create;
         CompositeView.Instance = Instance;
         // DEFINE THE @public/@static SYMBOLS FOR THE CLOSURE
-        function create() {
-            return new Instance();
+        /**
+         * Creates a new CompositeView handled private by this module. If any 
+         * instance is available then the method return a cached one.
+         *
+         * @param id - the identifier of the current view.
+         */
+        function create(id) {
+            if(!id)
+                throw new Error("org.iswas.view.CompositeView[no identifier available]");
+            if(_cache.hasInstance(id)) {
+                return _cache.getInstance(id);
+            }
+            var instance = new Instance(id);
+            _cache.setInstance(id, instance);
+            return instance;
         }
-        function Instance() {
+        /**
+         * @param id - the identifier of the current view.
+         */
+        function Instance(id) {
+            dump("org.iswas.view.CompositeView.create[id=" + id + "]\n");
+            this.id = id;
             this.parent = null;
             this.updateIndex = {};
         }
@@ -81,12 +100,14 @@
                 comp[i].update(hash);
             }
         }
-
+        /**
+         * For debug
+         */
         Instance.prototype.toString = function() {
             return "org.iswas.view.ComposietView";
         }
-    // DEFINE THE @private SYMBOLS FOR THE CLOSURE
-    // note it is quite good to set an underscore before each symbol
-        
+        // DEFINE THE @private SYMBOLS FOR THE CLOSURE
+        // note it is quite good to set an underscore before each symbol
+        var _cache = InstanceCache.create("org.iswas.view.CompositeView");
     })();
 })();

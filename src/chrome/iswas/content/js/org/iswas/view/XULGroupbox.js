@@ -23,7 +23,7 @@
             CompositeView.Instance.call(this);
             this.id = id;
         }
-        Instance.prototype = CompositeView.create();
+        Instance.prototype = CompositeView.create(this.id);
         Instance.prototype.constructor = Instance;
         Instance.prototype.update = function(hash) {
             CompositeView.Instance.prototype.update.call(this, hash);

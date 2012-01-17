@@ -1,5 +1,5 @@
 // define the class in a closure and do not overfill the global namespace
-(function(){
+(function () {
     // add some modules that are required to implement this module
     // e.g. Module.require(name, version);
     Module.require("org.iswas.controller.handler.RDFSearchUIEventHandler");
@@ -11,10 +11,10 @@
     // define a new classname by setting their namespace and an optional version
     // e.g. ClassName = Module.createNS("namespace", version);
     // abstract class for the extension that delegates method calls
-    ISWASController = Module.createNS("org.iswas.controller.ISWASController",0.1);
+    ISWASController = Module.createNS("org.iswas.controller.ISWASController", 0.1);
     // define the symbols that can be imported by other modules
     // e.g. ClassName.EXPORTED_SYMBOLS = ["@symbols"];
-    ISWASController.EXPORTED_SYMBOLS = ["run","autorun"];
+    ISWASController.EXPORTED_SYMBOLS = ["run", "autorun"];
     // define your symbols in a closure to get real privacy :-)
     // and do not forget to register the @public/@static symbols for the class!
     (function() {
