@@ -1,6 +1,0 @@
-content iswas jar:chrome/iswas.jar!/chrome/iswas/content/
-skin iswas classic jar:chrome/iswas.jar!/chrome/iswas/skin/classic/
-locale iswas de-DE jar:chrome/iswas.jar!/chrome/iswas/locale/de-DE/
-locale iswas en-US jar:chrome/iswas.jar!/chrome/iswas/locale/en-US/
-
-overlay chrome://browser/content/browser.xul chrome://iswas/content/browserOverlay.xul
