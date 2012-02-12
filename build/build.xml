@@ -6,8 +6,10 @@
     <property name="project" value="ISWAS"/>
     <property name="src" location="src"/>
     <property name="dist"  location="dist"/>
-    <property name="build.classes" location="build/classes"/>
-    <property name="config.release" location="config/release"/>
+    <property name="build" location="build"/>
+    <property name="config" location="config"/>
+    <property name="build.classes" location="${build}/classes"/>
+    <property name="config.release" location="${config}/release"/>
 
     <target name="clean" description="clean up" >
         <delete dir="${dist}"/>
