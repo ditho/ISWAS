@@ -1,0 +1,8 @@
+content iswas chrome/iswas/content/
+skin iswas classic chrome/iswas/skin/classic/
+locale iswas de-DE chrome/iswas/locale/de-DE/
+locale iswas en-US chrome/iswas/locale/en-US/
+
+resource org chrome://iswas/content/js/org/
+
+overlay chrome://browser/content/browser.xul chrome://iswas/content/browserOverlay.xul

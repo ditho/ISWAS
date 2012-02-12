@@ -3,28 +3,34 @@
     <description>
         Builds the Firefox-Addon Integrated Semantic Web Accessibility Search
     </description>
-    <!-- set global properties for this build -->
+    <property name="project" value="ISWAS"/>
     <property name="src" location="src"/>
-    <property name="build" location="build"/>
     <property name="dist"  location="dist"/>
+    <property name="build.classes" location="build/classes"/>
+    <property name="config.release" location="config/release"/>
 
-    <target name="init">
+    <target name="clean" description="clean up" >
+        <delete dir="${dist}"/>
+    </target>
+
+    <target name="init" depends="clean">
         <tstamp/>
     </target>
 
-    <target name="compile" depends="init" description="compile the source " >
-        <mkdir dir="${build}/compile"/>
-        <!-- Compile the javascript code from ${src} into ${build}/compile -->
+    <target name="compile" depends="init" description="compile the source" >
+        <mkdir dir="${build.classes}"/>
+        <copy todir="${build.classes}">
+            <fileset dir="${src}" excludes="**/*.xpi"/>
+        </copy>
+        
+        <copy todir="${build.classes}" overwrite="true">
+            <fileset dir="${config.release}"/>
+        </copy>
     </target>
 
     <target name="dist" depends="compile" description="generate the distribution" >
-        <!-- Create the distribution directory -->
         <mkdir dir="${dist}"/>
-    </target>
-
-    <target name="clean" description="clean up" >
-        <!-- Delete the ${build} and ${dist} directory trees -->
-        <delete dir="${build}/compile"/>
-        <delete dir="${dist}"/>
+        <zip basedir="${build.classes}" destfile="${dist}/${project}-${DSTAMP}.xpi"/>
+        <delete dir="${build.classes}"/>
     </target>
 </project>
