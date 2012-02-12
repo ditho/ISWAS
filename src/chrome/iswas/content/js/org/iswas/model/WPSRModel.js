@@ -61,12 +61,10 @@
             }
             var frequency = getUpdateFrequency(rdf);
             var key = rdf + frequency;
-            if (cache.hasInstance(key)) {
-                return cache.getInstance(key);
+            if (!cache.hasInstance(key)) {
+                cache.setInstance(key, new Instance(rdf));
             }
-            var instance = new Instance(rdf);
-            cache.setInstance(key, instance);
-            return instance;
+            return cache.getInstance(key);
         }
         /**
          * Get the update frequency.
@@ -163,7 +161,6 @@
          * @param rdf
          */
         function checkFrequency(rdf) {
-            //dump("org.iswas.model.WPSRModel.setURI[rdf=" + rdf + "]\n");
             var currentFrequency = getUpdateFrequency(rdf);
             if (!frequency[rdf] || frequency[rdf] !== currentFrequency) {
                 frequency[rdf] = currentFrequency;
@@ -179,7 +176,6 @@
          * @param index - to get
          */
         function getCandidate(rdf, index) {
-            //dump("org.iswas.model.WPSRModel.getCandidate[rdf=" + rdf + ",index=" + index + "]\n");
             var inst = create(rdf);
             return inst.getCandidate(index);
         }
@@ -191,7 +187,6 @@
          * @param index - to delete
          */
         function deleteCandidate(rdf, index) {
-            //dump("org.iswas.model.WPSRModel.deleteCandidate[rdf=" + rdf + ",index=" + index + "]\n");
             var inst = create(rdf);
             inst.deleteCandidate(index);
         }
@@ -202,7 +197,6 @@
          * @param can
          */
         function addCandidate(rdf, can) {
-            //dump("org.iswas.model.WPSRModel.addCandidate[rdf=" + rdf + ",candidate=" + can + "]\n");
             var inst = create(rdf);
             inst.addCandidate(can);
         }
@@ -213,7 +207,6 @@
          * @param rdf - the index to get for
          */
         function getIndex(rdf) {
-            //dump("org.iswas.model.WPSRModel.getIndex[rdf=" + rdf + "]\n");
             var inst = create(rdf);
             return inst.getIndex();
         }
@@ -223,7 +216,6 @@
          * @param rdf - to increase the index for
          */
         function next(rdf) {
-            //dump("org.iswas.model.WPSRModel.next[rdf=" + rdf + "]\n");
             var inst = create(rdf);
             inst.next();
         }
@@ -233,7 +225,6 @@
          * @param rdf - to decrease the index for
          */
         function prev(rdf) {
-            //dump("org.iswas.model.WPSRModel.prev[rdf=" + rdf + "]\n");
             var inst = create(rdf);
             inst.prev();
         }
@@ -243,7 +234,6 @@
          * @param rdf - to get the size for
          */
         function size(rdf) {
-            //dump("org.iswas.model.WPSRModel.size[rdf=" + rdf + "]\n");
             var inst = create(rdf);
             return inst.size();
         }
@@ -253,11 +243,8 @@
          * @param rdf - to trigger WPSR for
          */
         function trigger(rdf) {
-            var begin = new Date();
-            //dump("org.iswas.model.WPSRModel.trigger[rdf=" + rdf + "]\n");
             var inst = create(rdf);
             inst.trigger();
-            dump("org.iswas.model.WPSRModel.trigger[rdf=" + rdf + ",time=" + (new Date().getTime() - begin.getTime()) + "ms]\n");
         }
         /**
          * Show whether the analysis was triggered or not
@@ -265,7 +252,6 @@
          * @param rdf - to show if triggered
          */
         function isTriggered(rdf) {
-            //dump("org.iswas.model.WPSRModel.isTrigger[rdf=" + rdf + "]\n");
             var inst = create(rdf);
             return inst.isTriggered();
         }
@@ -275,7 +261,6 @@
          * @param rdf - to clear up the trigger flag
          */
         function clear(rdf) {
-            //dump("org.iswas.model.WPSRModel.clear[rdf=" + rdf + "]\n");
             var inst = create(rdf);
             inst.clear();
         }
@@ -321,9 +306,6 @@
          * @throws Error - if the analysis is not triggered before
          */
         Instance.prototype.deleteCandidate = function (index) {
-            if (!this.isTriggered()) {
-                throw new Error("org.iswas.model.WPSRModel.deleteCandidate[can not delete any candidate, trigger the analysis first]");
-            }
             if (!this.candidateList || this.candidateList.isEmpty()) {
                 return;
             }

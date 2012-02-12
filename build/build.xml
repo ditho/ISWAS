@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ISWAS" default="dist" basedir=".">
+    <description>
+        Builds the Firefox-Addon Integrated Semantic Web Accessibility Search
+    </description>
+    <!-- set global properties for this build -->
+    <property name="src" location="src"/>
+    <property name="build" location="build"/>
+    <property name="dist"  location="dist"/>
+
+    <target name="init">
+        <tstamp/>
+    </target>
+
+    <target name="compile" depends="init" description="compile the source " >
+        <mkdir dir="${build}/compile"/>
+        <!-- Compile the javascript code from ${src} into ${build}/compile -->
+    </target>
+
+    <target name="dist" depends="compile" description="generate the distribution" >
+        <!-- Create the distribution directory -->
+        <mkdir dir="${dist}"/>
+    </target>
+
+    <target name="clean" description="clean up" >
+        <!-- Delete the ${build} and ${dist} directory trees -->
+        <delete dir="${build}/compile"/>
+        <delete dir="${dist}"/>
+    </target>
+</project>
