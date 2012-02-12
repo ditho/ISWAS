@@ -8,8 +8,7 @@
     <property name="dist"  location="dist"/>
     <property name="build" location="build"/>
     <property name="config" location="config"/>
-    <property name="build.classes" location="${build}/classes"/>
-    <property name="config.release" location="${config}/release"/>
+    <property name="config.release" location="${config}/release/src"/>
 
     <target name="clean" description="clean up" >
         <delete dir="${dist}"/>
@@ -20,19 +19,19 @@
     </target>
 
     <target name="compile" depends="init" description="compile the source" >
-        <mkdir dir="${build.classes}"/>
-        <copy todir="${build.classes}">
+        <mkdir dir="${build}"/>
+        <copy todir="${build}">
             <fileset dir="${src}" excludes="**/*.xpi"/>
         </copy>
         
-        <copy todir="${build.classes}" overwrite="true">
+        <copy todir="${build}" overwrite="true">
             <fileset dir="${config.release}"/>
         </copy>
     </target>
 
     <target name="dist" depends="compile" description="generate the distribution" >
         <mkdir dir="${dist}"/>
-        <zip basedir="${build.classes}" destfile="${dist}/${project}-${DSTAMP}.xpi"/>
-        <delete dir="${build.classes}"/>
+        <zip basedir="${build}" destfile="${dist}/${project}-${DSTAMP}.xpi"/>
+        <delete dir="${build}"/>
     </target>
 </project>
