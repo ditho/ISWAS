@@ -24,7 +24,7 @@
             <fileset dir="${src}" excludes="**/*.xpi"/>
         </copy>
         
-        <copy todir="${build}" overwrite="true">
+        <copy todir="${build}" force="true" overwrite="true">
             <fileset dir="${config.release}"/>
         </copy>
     </target>
