@@ -289,11 +289,11 @@
             if (!this.isTriggered()) {
                 throw new Error("org.iswas.model.WPSRModel.getCandidate[can not fetch any candidate, trigger the analysis first]");
             }
+            if (index !== 0 && !index) {
+                index = this.getIndex();
+            }
             if (!this.candidateList || this.candidateList.isEmpty()) {
                 return null;
-            }
-            if (index !== 0 && !index) {
-                return this.candidateList.get(this.index);
             }
             return this.candidateList.get(index);
         };
@@ -306,12 +306,10 @@
          * @throws Error - if the analysis is not triggered before
          */
         Instance.prototype.deleteCandidate = function (index) {
-            if (!this.candidateList || this.candidateList.isEmpty()) {
-                return;
-            }
             if (index !== 0 && !index) {
-                this.candidateList.remove(this.getIndex());
-            } else {
+                index = this.getIndex();
+            }
+            if (this.candidateList && !this.candidateList.isEmpty()) {
                 this.candidateList.remove(index);
             }
             setChanged();
@@ -320,30 +318,10 @@
         /**
          * Add an candidate to the list of candidates.
          *
-         * TODO: do not proof any method -> instanceof
-         *
          * @param {Object} candidate - to add
          * @throws Error - if the candidate is not defined
          */
         Instance.prototype.addCandidate = function (candidate) {
-            if (!candidate) {
-                throw new Error("org.iswas.model.WPSRModel.addCandidate[candidate is not defined]");
-            }
-            if (!candidate.getXMLString) {
-                throw new Error("org.iswas.model.WPSRModel.addCandidate[candidate.getXMLString is not defined]");
-            }
-            if (!candidate.getRole) {
-                throw new Error("org.iswas.model.WPSRModel.addCandidate[candidate.getRole is not defined]");
-            }
-            if (!candidate.getXPathExpression) {
-                throw new Error("org.iswas.model.WPSRModel.addCandidate[candidate.getXPathExpression is not defined]");
-            }
-            if (!candidate.setXPathExpression) {
-                throw new Error("org.iswas.model.WPSRModel.addCandidate[candidate.setXPathExpression is not defined]");
-            }
-            if (!candidate.getScore) {
-                throw new Error("org.iswas.model.WPSRModel.addCandidate[candidate.getScore is not defined]");
-            }
             this.candidateList.add(candidate);
             setChanged();
             notifyObserver(this, this.rdf);
@@ -367,7 +345,7 @@
             if (!this.isTriggered()) {
                 throw new Error("org.iswas.model.WPSRModel.next[can not increase the index, trigger the analysis first]");
             }
-            if (this.candidateList === null || this.candidateList.isEmpty()) {
+            if (!this.candidateList || this.candidateList.isEmpty()) {
                 return;
             }
             this.index++;
@@ -386,7 +364,7 @@
             if (!this.isTriggered()) {
                 throw new Error("org.iswas.model.WPSRModel.prev[can not decrease the index, trigger the analysis first]");
             }
-            if (this.candidateList === null || this.candidateList.isEmpty()) {
+            if (!this.candidateList || this.candidateList.isEmpty()) {
                 return;
             }
             this.index--;
@@ -409,12 +387,13 @@
         };
         /**
          * Trigger the WPSR analysis and get new candidates.
+         * 
+         * TODO: get an asynchronous worker for triggering the analysis.
          */
         Instance.prototype.trigger = function () {
             setChanged();
             notifyObserver(this, this.rdf);
             this.candidateList = WPSRClassLoader.trigger(this.rdf, "wpsr.WPSR");
-            //this.cnadidateList = WPSRClassLoader.trigger(this.rdf, "wpsr.WPSRDOM");
             this.triggered = true;
             setChanged();
             notifyObserver(this, this.rdf);
