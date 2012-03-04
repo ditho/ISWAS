@@ -1,5 +1,5 @@
 // define the class in a closure and do not overfill the global namespace
-(function(){
+(function () {
     // add some modules that are required to implement this module
     // e.g. Module.require(name, version);
 
@@ -11,7 +11,7 @@
     CompositeView.EXPORTED_SYMBOLS = ["create"];
     // define your symbols in a closure to get real privacy :-)
     // and do not forget to register the @public/@static symbols for the class!
-    (function(){
+    (function () {
         // REGISTER THE @public/@static SYMBOLS FOR THE CLASS
         // e.g. ClassName.method = method;
         Components.utils.import("resource://org/iswas/utils/InstanceCache.jsm");
@@ -25,13 +25,14 @@
          * @param id - the identifier of the current view.
          */
         function create(id) {
-            if(!id)
+            if (!id) {
                 throw new Error("org.iswas.view.CompositeView[no identifier available]");
-            if(_cache.hasInstance(id)) {
-                return _cache.getInstance(id);
+            }
+            if (instanceCache.hasInstance(id)) {
+                return instanceCache.getInstance(id);
             }
             var instance = new Instance(id);
-            _cache.setInstance(id, instance);
+            instanceCache.setInstance(id, instance);
             return instance;
         }
         /**
@@ -49,14 +50,14 @@
          * @param c - the component to add
          * @param hash - the component value to update for
          */
-        Instance.prototype.add = function(c, hash) {
+        Instance.prototype.add = function (c, hash) {
             dump("org.iswas.view.CompositeView.add[component=" + c + ",hash=" + hash + "]\n");
             c.parent = this;
-            if(!this.updateIndex[hash]) {
+            if (!this.updateIndex[hash]) {
                 this.updateIndex[hash] = [];
             }
             var comp = this.updateIndex[hash];
-            for(var i in comp) {
+            for (var i in comp) {
                 if(comp[i] == c) {
                     return;
                 }
@@ -108,6 +109,6 @@
         }
         // DEFINE THE @private SYMBOLS FOR THE CLOSURE
         // note it is quite good to set an underscore before each symbol
-        var _cache = InstanceCache.create("org.iswas.view.CompositeView");
+        var instanceCache = InstanceCache.create("org.iswas.view.CompositeView");
     })();
 })();
