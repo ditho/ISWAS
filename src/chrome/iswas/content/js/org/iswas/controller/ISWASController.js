@@ -63,13 +63,18 @@
      */
     function autorun(isPageLoad) {
         var rdf;
+        var preferenceMap = RDFPreference.getMap();
         // TODO: deactivate all views for processing
-        for (rdf in RDFPreference.getMap()) {
-            view.update(ISWASController, rdf);
+        for (rdf in preferenceMap) {
+            if (preferenceMap.hasOwnProperty(rdf)) {
+                view.update(ISWASController, rdf);
+            }
         }
         // update all resource descriptions found in the loaded map.
-        for (rdf in RDFPreference.getMap()) {
-            runResourceDescription(rdf, RDFPreference.get(rdf).getAutorunPref(), isPageLoad);
+        for (rdf in preferenceMap) {
+            if (preferenceMap.hasOwnProperty(rdf)) {
+                runResourceDescription(rdf, RDFPreference.get(rdf).getAutorunPref(), isPageLoad);
+            }
         }
     }
     // DEFINE THE @private SYMBOLS FOR THE CLOSURE
@@ -204,4 +209,4 @@
     function unload() {
         window.getBrowser().removeProgressListener(ProgressListener);
     }
-})();
+}());

@@ -441,4 +441,4 @@
     WPSRModel.trigger = trigger;
     WPSRModel.isTriggered = isTriggered;
     WPSRModel.clear = clear;
-})();
+}());

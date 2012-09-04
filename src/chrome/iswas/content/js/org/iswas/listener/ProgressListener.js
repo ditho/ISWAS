@@ -31,7 +31,6 @@
     ProgressListener.onStateChange = onStateChange;
     ProgressListener.onStatusChange = onStatusChange;
     ProgressListener.load = load;
-
     // DEFINE THE @public/@static SYMBOLS FOR THE CLOSURE
     /**
      *
@@ -164,4 +163,4 @@
     function clearChanged() {
         loaded = false;
     }
-})();
+}());

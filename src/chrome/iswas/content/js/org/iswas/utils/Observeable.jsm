@@ -44,29 +44,28 @@
  */
 // define a new classname by setting their namespace and an optional version
 // e.g. ClassName = Module.createNamespace("namespace", version);
-Observeable = {}
+Observeable = {};
 // define the symbols that can be imported by other modules
 // e.g. var EXPORTED_SYMBOLS = ["@symbols"];
 var EXPORTED_SYMBOLS = ["Observeable"];
 
 // define your symbols in a closure to get real privacy :-)
 // and do not forget to register the @public/@static symbols for the class!
-(function(){
-    // REGISTER THE @public/@static SYMBOLS FOR THE CLASS
-    // e.g. ClassName.method = method;
-    Observeable.create = create;
-
-    // DEFINE THE @public/@static SYMBOLS FOR THE CLOSURE
-    function create() {
-        return new Instance();
-    }
-
+(function () {
+    'use strict';
     // DEFINE THE @private SYMBOLS FOR THE CLOSURE
     // note it is quite good to set an underscore before each symbol
     function Instance(model) {
         this.changed = false;
-        this.obs = new Array();
+        this.obs = [];
     }
+    // DEFINE THE @public/@static SYMBOLS FOR THE CLOSURE
+    function create() {
+        return new Instance();
+    }
+    // REGISTER THE @public/@static SYMBOLS FOR THE CLASS
+    // e.g. ClassName.method = method;
+    Observeable.create = create;
     /**
      * Adds an observer to the set of observers for this object, provided
      * that it is not the same as some observer already in the set.
@@ -76,36 +75,41 @@ var EXPORTED_SYMBOLS = ["Observeable"];
      * @param   o   an observer to be added.
      * @throws NullPointerException   if the parameter o is null.
      */
-    Instance.prototype.addObserver = function(o) {
-        if(!o)
+    Instance.prototype.addObserver = function (o) {
+        if (!o) {
             throw new Error("org.iswas.utils.Observeable.addObserver[observer not defined]");
-        if(!o.update)
-            throw new Error("org.iswas.utils.Observeable.addObserver[observer o=" + o + " does not implement update]")
-        for(var i in this.obs) {
-            if(this.obs[i] == o)                
+        }
+        if (!o.update) {
+            throw new Error("org.iswas.utils.Observeable.addObserver[observer o=" + o + " does not implement update]");
+        }
+        var i = null;
+        for (i in this.obs) {
+            if (this.obs[i] === o) {
                 return;
+            }
         }
         this.obs.push(o);
-    }
+    };
     /**
      * Deletes an observer from the set of observers of this object.
      * Passing <CODE>null</CODE> to this method will have no effect.
      * @param   o   the observer to be deleted.
      */
-    Instance.prototype.deleteObserver = function(o) {
-        for(var i in this.obs) {
-            if(this.obs[i] == o) {
-                this.obs.splice(i,1);
+    Instance.prototype.deleteObserver = function (o) {
+        var i = null;
+        for (i in this.obs) {
+            if (this.obs[i] === o) {
+                this.obs.splice(i, 1);
                 return;
             }
         }
-    }
+    };
     /**
      * Clears the observer list so that this object no longer has any observers.
      */
-    Instance.prototype.deleteObservers = function() {
+    Instance.prototype.deleteObservers = function () {
         this.obs = [];
-    }
+    };
     /**
      * If this object has changed, as indicated by the
      * <code>hasChanged</code> method, then notify all of its observers
@@ -121,25 +125,32 @@ var EXPORTED_SYMBOLS = ["Observeable"];
      * @see     java.util.Observable#hasChanged()
      * @see     java.util.Observer#update(java.util.Observable, java.lang.Object)
      */
-    Instance.prototype.notifyObserver = function(o, arg) {
+    Instance.prototype.notifyObserver = function (o, arg) {
         // a temporary array buffer, used as a snapshot of the state of current Observers.
         var arrLocal = [];
-        if (!this.changed)
+        if (!this.changed) {
             return;
-        for(var i in this.obs)
-            arrLocal[i] = this.obs[i];
-        this.clearChanged();
-        for (var i in arrLocal) {
-            arrLocal[i].update(o, arg);
         }
-    }
+        var i = null;
+        for (i in this.obs) {
+            if (this.obs.hasOwnProperty(i)) {
+                arrLocal[i] = this.obs[i];
+            }
+        }
+        this.clearChanged();
+        for (i in arrLocal) {
+            if (arrLocal.hasOwnProperty(i)) {
+                arrLocal[i].update(o, arg);
+            }
+        }
+    };
     /**
      * Marks this <tt>Observable</tt> object as having been changed; the
      * <tt>hasChanged</tt> method will now return <tt>true</tt>.
      */
-    Instance.prototype.setChanged = function() {
+    Instance.prototype.setChanged = function () {
         this.changed = true;
-    }
+    };
     /**
      * Indicates that this object has no longer changed, or that it has
      * already notified all of its observers of its most recent change,
@@ -150,9 +161,9 @@ var EXPORTED_SYMBOLS = ["Observeable"];
      * @see     java.util.Observable#notifyObservers()
      * @see     java.util.Observable#notifyObservers(java.lang.Object)
      */
-    Instance.prototype.clearChanged = function() {
+    Instance.prototype.clearChanged = function () {
         this.changed = false;
-    }
+    };
     /**
      * Tests if this object has changed.
      *
@@ -163,15 +174,15 @@ var EXPORTED_SYMBOLS = ["Observeable"];
      * @see     java.util.Observable#clearChanged()
      * @see     java.util.Observable#setChanged()
      */
-    Instance.prototype.hasChanged = function() {
+    Instance.prototype.hasChanged = function () {
         return this.changed;
-    }
+    };
     /**
      * Returns the number of observers of this <tt>Observable</tt> object.
      *
      * @return  the number of observers of this object.
      */
-    Instance.prototype.countObservers = function() {
+    Instance.prototype.countObservers = function () {
         return this.obs.length;
-    }
-})();
+    };
+}());

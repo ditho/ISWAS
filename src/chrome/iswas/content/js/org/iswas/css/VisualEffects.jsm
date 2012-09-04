@@ -6,17 +6,11 @@ VisualEffects = {};
 var EXPORTED_SYMBOLS = ["VisualEffects"];
 // define your symbols in a closure to get real privacy :-)
 // and do not forget to register the @public/@static symbols for the class!
-(function(){
-    // set up short names for used modules in this class
-    // e.g. ClassName = org.iswas.package.ClassName;
-    //PreferenceManager = org.iswas.preferences.PreferenceManager;
-
+(function () {
     // REGISTER THE @public/@static SYMBOLS FOR THE CLASS
     // e.g. ClassName.method = method;
     VisualEffects.show = show;
-
     // DEFINE THE @public/@static SYMBOLS FOR THE CLOSURE
-
     /**
      * Let us show the visual effect the user choose in the
      * preferences.
